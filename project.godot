@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "Actions",
-"language": "GDScript",
-"path": "res://Common/Classes/Actions.gd"
-}, {
 "base": "Node2D",
 "class": "Ammo",
 "language": "GDScript",
@@ -23,6 +18,11 @@ _global_script_classes=[ {
 "class": "Asteroid",
 "language": "GDScript",
 "path": "res://Asteroid/Asteroid.gd"
+}, {
+"base": "Node2D",
+"class": "Engine",
+"language": "GDScript",
+"path": "res://Ship/Engine/Engine.gd"
 }, {
 "base": "Ship",
 "class": "PlayerShip",
@@ -45,9 +45,9 @@ _global_script_classes=[ {
 "path": "res://Weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
-"Actions": "",
 "Ammo": "",
 "Asteroid": "",
+"Engine": "",
 "PlayerShip": "",
 "Ship": "",
 "SpaceObject": "",
