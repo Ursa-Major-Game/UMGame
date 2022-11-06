@@ -16,4 +16,4 @@ func produce_asteroid_dir(pos: Vector2 = Vector2.ZERO, _dir: Vector2 = Vector2.D
 	return asteroid_instance
 
 func _on_Timer_timeout():
-	var A = produce_asteroid_dir(Vector2(randi() % 720, -30))
+	var A = produce_asteroid_dir(Vector2(randi() % 720, -80))

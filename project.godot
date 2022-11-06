@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Ammo/Ammo.gd"
 }, {
-"base": "SpaceObject",
+"base": "SpaceObjectBody",
 "class": "Asteroid",
 "language": "GDScript",
 "path": "res://Asteroid/Asteroid.gd"
@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Ship/PlayerShip.gd"
 }, {
-"base": "SpaceObject",
+"base": "SpaceObjectKinematic",
 "class": "Ship",
 "language": "GDScript",
 "path": "res://Ship/Ship.gd"
@@ -38,6 +38,16 @@ _global_script_classes=[ {
 "class": "SpaceObject",
 "language": "GDScript",
 "path": "res://Common/Classes/SpaceObject.gd"
+}, {
+"base": "RigidBody2D",
+"class": "SpaceObjectBody",
+"language": "GDScript",
+"path": "res://Common/Classes/SpaceObjectBody.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "SpaceObjectKinematic",
+"language": "GDScript",
+"path": "res://Common/Classes/SpaceObjectKinematic.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
@@ -51,6 +61,8 @@ _global_script_class_icons={
 "PlayerShip": "",
 "Ship": "",
 "SpaceObject": "",
+"SpaceObjectBody": "",
+"SpaceObjectKinematic": "",
 "Weapon": ""
 }
 
@@ -128,6 +140,7 @@ secondary_weapon={
 [physics]
 
 common/enable_pause_aware_picking=true
+2d/default_gravity=18
 
 [rendering]
 

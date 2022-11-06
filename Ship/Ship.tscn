@@ -130,7 +130,7 @@ height = 18.0
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5, 10 )
 
-[node name="Ship" type="Node2D"]
+[node name="Ship" type="KinematicBody2D"]
 script = ExtResource( 1 )
 weapons = [ null ]
 
@@ -146,17 +146,13 @@ anims/apparition = SubResource( 2 )
 [node name="Engine" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="BodyArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+[node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
 
-[node name="WingsArea" type="Area2D" parent="."]
-
-[node name="Wing1" type="CollisionShape2D" parent="WingsArea"]
+[node name="Wing1" type="CollisionShape2D" parent="."]
 position = Vector2( 22, 0 )
 shape = SubResource( 6 )
 
-[node name="Wing2" type="CollisionShape2D" parent="WingsArea"]
+[node name="Wing2" type="CollisionShape2D" parent="."]
 position = Vector2( -22, 0 )
 shape = SubResource( 6 )
