@@ -12,6 +12,9 @@ weapons = [  ]
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
 
+[node name="Engine" parent="." index="2"]
+position = Vector2( 0, 41 )
+
 [node name="CollisionShape2D" parent="BodyArea" index="0"]
 position = Vector2( 0, 20 )
 

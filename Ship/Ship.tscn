@@ -125,9 +125,10 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=5]
-height = 34.0
+height = 18.0
 
 [sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 5, 10 )
 
 [node name="Ship" type="Node2D"]
 script = ExtResource( 1 )
