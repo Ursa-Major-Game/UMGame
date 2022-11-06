@@ -17,9 +17,9 @@ func hide():
 	
 func show():
 	$AnimationPlayer.play("apparition")
-	
-func shoot(id: int):
-	w_instances.primary.shoot()
 
 func get_current_weapon () -> Weapon:
 	return w_current and w_instances[w_current]
+	
+func shoot(id: int):
+	get_current_weapon().shoot()
