@@ -55,6 +55,10 @@ run/main_scene="res://Game/Game.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Common/Globals.gd"
+
 [display]
 
 window/size/width=1280

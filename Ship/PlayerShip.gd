@@ -17,8 +17,8 @@ func _physics_process(delta):
 	dir = dir.normalized()
 	velocity = lerp(velocity, dir * max_speed * delta, acceleration)
 	position += velocity
-	global_position.x = clamp(global_position.x, 0, 1280)
-	global_position.y = clamp(global_position.y, 0, 720)
+	global_position.x = clamp(global_position.x, 0, Globals.game_screen_width)
+	global_position.y = clamp(global_position.y, 0, Globals.game_screen_height)
 	var roll = lerp(dir.x, dir.x * 20, 0.2)
 	var pitch = lerp(dir.y, dir.y * 20, 0.2)
 	$Sprite.material.set_shader_param("x_rot", roll)
