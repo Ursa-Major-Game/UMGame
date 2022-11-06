@@ -1,0 +1,136 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Common/Fonts/futurespore.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/UILayer.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+
+[sub_resource type="Animation" id=3]
+resource_name = "ui_start"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MainMenuUI/TitleLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainMenuUI/HBoxContainer/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "vanish"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MainMenuUI:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="UILayer" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="MainMenuUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TitleLabel" type="Label" parent="MainMenuUI"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -221.5
+margin_right = 221.5
+margin_bottom = 65.0
+theme = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0.352941, 0.0862745, 0.0862745, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 1
+text = "Ursa Major"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -310.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 187.0
+margin_bottom = 720.0
+theme = ExtResource( 1 )
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MainMenuUI/HBoxContainer/VBoxContainer"]
+margin_top = 260.0
+margin_right = 187.0
+margin_bottom = 307.0
+text = "Start"
+flat = true
+
+[node name="BossesButton" type="Button" parent="MainMenuUI/HBoxContainer/VBoxContainer"]
+margin_top = 311.0
+margin_right = 187.0
+margin_bottom = 358.0
+text = "Bosses"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="MainMenuUI/HBoxContainer/VBoxContainer"]
+margin_top = 362.0
+margin_right = 187.0
+margin_bottom = 409.0
+text = "Options"
+flat = true
+
+[node name="QuitButton" type="Button" parent="MainMenuUI/HBoxContainer/VBoxContainer"]
+margin_top = 413.0
+margin_right = 187.0
+margin_bottom = 460.0
+text = "Quit"
+flat = true
+
+[node name="VersionLabel" type="Label" parent="MainMenuUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -41.0
+margin_right = 264.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Version : 0.1"
+valign = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/ui_start = SubResource( 3 )
+anims/vanish = SubResource( 4 )
+
+[connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/BossesButton" to="." method="_on_BossesButton_pressed"]
+[connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
