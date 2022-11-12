@@ -132,7 +132,6 @@ extents = Vector2( 5, 10 )
 
 [node name="Ship" type="KinematicBody2D"]
 script = ExtResource( 1 )
-weapons = [ null ]
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 4 )
@@ -156,3 +155,7 @@ shape = SubResource( 6 )
 [node name="Wing2" type="CollisionShape2D" parent="."]
 position = Vector2( -22, 0 )
 shape = SubResource( 6 )
+
+[node name="PrimaryAnchor" type="Position2D" parent="."]
+
+[node name="SecondaryAnchor" type="Position2D" parent="."]

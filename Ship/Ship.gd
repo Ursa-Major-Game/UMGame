@@ -2,15 +2,20 @@ extends SpaceObjectKinematic
 class_name Ship
 
 export (float, 0.0, 0.2) var acceleration = 0.1
-export (Array, PackedScene) var weapons = []
+export (PackedScene) var Primary
+export (PackedScene) var Secondary
 
-var w_instances = []
-var w_current: int
+var PW_instance : Weapon
+var SW_instance : Weapon
 
 func _ready():
 	show()
-	for w in weapons: w_instances.append(w.instance())
-	if w_instances.size() > 0: w_current = 0
+	if Primary:
+		PW_instance = Primary.instance()
+		$PrimaryAnchor.add_child(PW_instance)
+	if Secondary:
+		SW_instance = Secondary.instance()
+		$SecondaryAnchor.add_child(SW_instance)
 
 func hide():
 	$Sprite.modulate.a = 0
@@ -18,8 +23,8 @@ func hide():
 func show():
 	$AnimationPlayer.play("apparition")
 
-func get_current_weapon () -> Weapon:
-	return w_current and w_instances[w_current]
+func fire_primary():
+	if PW_instance: PW_instance.fire_ammo()
 	
-func shoot(id: int):
-	get_current_weapon().shoot()
+func fire_secondary():
+	if SW_instance: SW_instance.fire_ammo()

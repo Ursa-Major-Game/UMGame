@@ -8,6 +8,11 @@ var input_movement = {
 	"right" : Vector2.RIGHT
 }
 
+var actions = {
+	"primary_weapon" : "fire_primary",
+	"secondary_weapon" : "fire_secondary"
+}
+
 func _physics_process(delta):
 	dir = Vector2.ZERO
 	for i in input_movement:
@@ -23,3 +28,6 @@ func _physics_process(delta):
 	var pitch = lerp(dir.y, dir.y * 25, 0.2)
 	$Sprite.material.set_shader_param("x_rot", roll)
 	$Sprite.material.set_shader_param("y_rot", pitch)
+	
+	for a in actions:
+		if Input.is_action_pressed(a): call(actions[a])

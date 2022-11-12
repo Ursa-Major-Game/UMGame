@@ -1,10 +1,9 @@
-extends Node2D
+extends SpaceObjectKinematic
 class_name Ammo
 
-var dir: Vector2
-var velocity : Vector2
-var acceleration : float
-var max_speed : float
+export (int) var ammo_speed = 500
 
 func _physics_process(delta):
-	velocity = dir.normalized() * delta * max_speed
+	velocity = dir.normalized() * delta * ammo_speed
+	global_position += velocity
+	if global_position.y <= -50: queue_free()
