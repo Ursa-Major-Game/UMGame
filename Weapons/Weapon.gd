@@ -18,7 +18,7 @@ func _ready():
 func make_ammo() -> Ammo:
 	return  AmmoType.instance()
 
-func fire_ammo(N: Object = get_tree()) -> void:
+func fire_ammo(N: Object = get_tree().root) -> void:
 	if not _can_fire: return
 	
 	var A = make_ammo()
