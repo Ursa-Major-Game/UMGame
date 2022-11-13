@@ -6,6 +6,7 @@
 [ext_resource path="res://Weapons/LaserWeapon01.tscn" type="PackedScene" id=4]
 
 [node name="PlayerShip" instance=ExtResource( 1 )]
+linear_damp = 2.0
 script = ExtResource( 2 )
 max_speed = 200
 Primary = ExtResource( 4 )

@@ -22,4 +22,8 @@ position = Vector2( 640, 360 )
 
 [node name="AsteroidsFactory" parent="." instance=ExtResource( 5 )]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 640, 360 )
+current = true
+
 [connection signal="start_game" from="UILayer" to="." method="_on_UILayer_start_game"]
