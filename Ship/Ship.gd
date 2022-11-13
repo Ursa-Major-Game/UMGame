@@ -1,4 +1,4 @@
-extends SpaceObjectKinematic
+extends SpaceObjectBody
 class_name Ship
 
 export (float, 0.0, 0.2) var acceleration = 0.1

@@ -130,8 +130,11 @@ height = 18.0
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5, 10 )
 
-[node name="Ship" type="KinematicBody2D"]
+[node name="Ship" type="RigidBody2D"]
+mass = 0.277778
+linear_damp = 0.0
 script = ExtResource( 1 )
+max_speed = 350
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 4 )

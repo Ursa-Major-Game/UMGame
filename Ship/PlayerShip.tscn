@@ -7,8 +7,10 @@
 
 [node name="PlayerShip" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-max_speed = 500
+max_speed = 200
 Primary = ExtResource( 4 )
+thrust = 250
+bounciness = 0.5
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
