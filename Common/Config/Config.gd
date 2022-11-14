@@ -15,3 +15,4 @@ func conf_is_valid(s: String):
 			for k in get_section_keys(s):
 				if not (c.has_section(s) and c.has_section_key(s, k)):
 					return false
+		return true
