@@ -1,5 +1,6 @@
 extends CanvasLayer
 signal start_game(level)
+signal ui_displayed
 
 var ui_input = {
 	"down" : 1,
@@ -21,6 +22,7 @@ func _ready():
 	selection_blob_instance.modulate.a = 0
 	add_child(selection_blob_instance)
 	selection_blob_instance.position = pos
+	emit_signal("ui_displayed")
 
 func set_selection(i: int):
 	var max_val = buttons_vbox.get_child_count() - 1

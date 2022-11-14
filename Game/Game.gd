@@ -14,7 +14,7 @@ func _ready():
 	SpawnPoint = $SpawnPosition2D
 	PlayerShipInstance = PlayerShip.instance()
 	PlayerShipInstance.get_node("Sprite").modulate.a = 0
-	yield($UILayer, "ready")
+	yield($UILayer, "ui_displayed")
 	if dbg_straight_to_game: _on_UILayer_start_game()
 	
 func _on_UILayer_start_game(level = 0):

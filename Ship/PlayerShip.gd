@@ -1,9 +1,6 @@
 extends Ship
 class_name PlayerShip
 
-export (int, 50, 1000) var thrust
-export (float, 0, 1) var bounciness
-
 var input_movement = {
 	"down" : Vector2.DOWN,
 	"up" : Vector2.UP,
@@ -16,13 +13,16 @@ var actions = {
 	"secondary_weapon" : "fire_secondary"
 }
 
+export (int, 50, 1000) var thrust
+export (float, 0, 1) var bounciness
+
 func _ready():
 	bounce = bounciness
 
 func _integrate_forces(state):
 	dir = Vector2.ZERO
 	for i in input_movement:
-		var m = "ui_%s" % [i]
+		var m = "move_%s" % [i]
 		if Input.is_action_pressed(m):
 			dir += input_movement[i]
 	dir = dir.normalized()
