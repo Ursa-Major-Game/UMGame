@@ -1,5 +1,6 @@
 extends CanvasLayer
 signal start_game(level)
+signal paused
 signal ui_displayed
 
 var ui_input = {
@@ -17,7 +18,7 @@ var selection_blob_instance
 func _ready():
 	$AnimationPlayer.play("ui_start")
 	yield($AnimationPlayer, "animation_finished")
-	var pos = $MainMenuUI/HBoxContainer/VBoxContainer.get_child(selection).rect_global_position + Vector2.DOWN * 24 + Vector2.LEFT * 28
+	var pos = buttons_vbox.get_child(selection).rect_global_position + Vector2.DOWN * 24 + Vector2.LEFT * 28
 	selection_blob_instance = selection_blob.instance()
 	selection_blob_instance.modulate.a = 0
 	add_child(selection_blob_instance)
@@ -61,6 +62,7 @@ func _process(delta):
 
 func vanish():
 	$AnimationPlayer.play("vanish")
+	$Background/AnimationPlayer.play("OpenView")
 	selection_blob_instance.vanish()
 	yield($AnimationPlayer, "animation_finished")
 	$MainMenuUI.hide()

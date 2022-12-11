@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Common/Shaders/shaderplaceholder.png" type="Texture" id=1]
+[ext_resource path="res://Common/Background.gd" type="Script" id=2]
 
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0.0357143, 0.555556, 1 )
@@ -28,23 +29,102 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 3 )
-shader_param/columns = 64.0
-shader_param/rows = 36.0
+shader_param/columns = 30.0
+shader_param/rows = 30.0
 shader_param/border_width = 0.05
 shader_param/border_color = Color( 0.705882, 0.756863, 0.764706, 1 )
 
-[node name="Background" type="Node2D"]
+[sub_resource type="Animation" id=7]
+resource_name = "OpenView"
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightSide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 250, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftSide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -250, 0 ) ]
+}
 
-[node name="BackgroundColor" type="Sprite" parent="."]
-position = Vector2( 1292.49, -7.49155 )
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightSide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftSide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="Background" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="LeftSide" type="Node2D" parent="."]
+
+[node name="BackgroundColor" type="Sprite" parent="LeftSide"]
+position = Vector2( 667.645, -7.49381 )
 rotation = 1.5708
-scale = Vector2( 0.584454, 1306.93 )
+scale = Vector2( 0.584454, 682.085 )
 texture = SubResource( 5 )
 centered = false
 
-[node name="Grid" type="Sprite" parent="."]
+[node name="Grid" type="Sprite" parent="LeftSide"]
 modulate = Color( 1, 1, 1, 0.254902 )
 material = SubResource( 6 )
-scale = Vector2( 5.36492, 3.24743 )
+position = Vector2( 23, 5 )
+scale = Vector2( 2.67152, 3.24743 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="RightSide" type="Node2D" parent="."]
+
+[node name="BackgroundColor" type="Sprite" parent="RightSide"]
+position = Vector2( 1292.49, -7.49155 )
+rotation = 1.5708
+scale = Vector2( 0.584454, 633.004 )
+texture = SubResource( 5 )
+centered = false
+
+[node name="Grid" type="Sprite" parent="RightSide"]
+modulate = Color( 1, 1, 1, 0.254902 )
+material = SubResource( 6 )
+position = Vector2( 663.29, 5 )
+scale = Vector2( 2.67333, 3.24743 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/OpenView = SubResource( 7 )
+anims/RESET = SubResource( 8 )

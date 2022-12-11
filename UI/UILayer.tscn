@@ -3,7 +3,7 @@
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Common/Fonts/futurespore.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/UILayer.gd" type="Script" id=3]
-[ext_resource path="res://UI/images/window.png" type="Texture" id=4]
+[ext_resource path="res://UI/Window.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Common/Background.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -57,11 +57,11 @@ tracks/0/keys = {
 [node name="UILayer" type="CanvasLayer"]
 script = ExtResource( 3 )
 
+[node name="Background" parent="." instance=ExtResource( 5 )]
+
 [node name="MainMenuUI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="Background" parent="MainMenuUI" instance=ExtResource( 5 )]
 
 [node name="TitleLabel" type="Label" parent="MainMenuUI"]
 modulate = Color( 1, 1, 1, 0 )
@@ -78,17 +78,7 @@ text = "Ursa Major"
 align = 1
 valign = 1
 
-[node name="TextureRect" type="TextureRect" parent="MainMenuUI"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -327.0
-margin_top = -217.0
-margin_right = 328.0
-margin_bottom = 217.0
-texture = ExtResource( 4 )
-expand = true
+[node name="Window" parent="MainMenuUI" instance=ExtResource( 4 )]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI"]
 anchor_left = 0.5

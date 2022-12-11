@@ -10,6 +10,11 @@ func start_game(level: int):
 	SpawnPoint.add_child(PlayerShipInstance)
 	$AsteroidsFactory/Timer.start()
 
+func pause_game():
+	$UILayer/Background.open_view()
+	yield($UILayer/Background, "opened")
+	get_tree().paused = true
+
 func _ready():
 	PlayerShipInstance = PlayerShip.instance()
 	PlayerShipInstance.get_node("Sprite").modulate.a = 0
