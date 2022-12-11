@@ -8,10 +8,10 @@
 [node name="PlayerShip" instance=ExtResource( 1 )]
 linear_damp = 2.0
 script = ExtResource( 2 )
-max_speed = 200
+acceleration = 0.2
 Primary = ExtResource( 4 )
 Secondary = ExtResource( 4 )
-thrust = 250
+thrust = 350
 bounciness = 0.5
 
 [node name="Sprite" parent="." index="0"]

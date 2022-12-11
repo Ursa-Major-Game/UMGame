@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/Window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/images/topbar.png" type="Texture" id=2]
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=3]
+[ext_resource path="res://UI/PauseDialog.gd" type="Script" id=4]
 
 [node name="PauseDialog" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="PauseBarIndicator" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -36,7 +38,7 @@ margin_right = -80.0
 margin_bottom = -80.0
 alignment = 1
 
-[node name="Button" type="Button" parent="TextureRect/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="TextureRect/VBoxContainer"]
 margin_top = 113.0
 margin_right = 495.0
 margin_bottom = 160.0

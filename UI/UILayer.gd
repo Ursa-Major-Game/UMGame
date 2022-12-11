@@ -62,7 +62,7 @@ func _process(delta):
 
 func vanish():
 	$AnimationPlayer.play("vanish")
-	$Background/AnimationPlayer.play("OpenView")
+	$Background.open_view()
 	selection_blob_instance.vanish()
 	yield($AnimationPlayer, "animation_finished")
 	$MainMenuUI.hide()
