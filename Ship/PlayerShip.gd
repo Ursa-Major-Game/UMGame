@@ -10,7 +10,8 @@ var input_movement = {
 
 var actions = {
 	"primary_weapon" : "fire_primary",
-	"secondary_weapon" : "fire_secondary"
+	"secondary_weapon" : "fire_secondary",
+	"all_weapons" : "fire_all"
 }
 
 export (int, 50, 1000) var thrust

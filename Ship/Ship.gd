@@ -28,3 +28,7 @@ func fire_primary():
 	
 func fire_secondary():
 	if SW_instance: SW_instance.fire_ammo()
+
+func fire_all():
+	fire_primary()
+	fire_secondary()
