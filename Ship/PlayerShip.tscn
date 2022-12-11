@@ -10,6 +10,7 @@ linear_damp = 2.0
 script = ExtResource( 2 )
 max_speed = 200
 Primary = ExtResource( 4 )
+Secondary = ExtResource( 4 )
 thrust = 250
 bounciness = 0.5
 
@@ -30,3 +31,6 @@ position = Vector2( -22, 25 )
 
 [node name="PrimaryAnchor" parent="." index="6"]
 position = Vector2( 39, -37 )
+
+[node name="SecondaryAnchor" parent="." index="7"]
+position = Vector2( -42, -36 )

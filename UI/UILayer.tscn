@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Common/Fonts/futurespore.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/UILayer.gd" type="Script" id=3]
+[ext_resource path="res://UI/images/window.png" type="Texture" id=4]
+[ext_resource path="res://Common/Background.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -59,6 +61,8 @@ script = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="Background" parent="MainMenuUI" instance=ExtResource( 5 )]
+
 [node name="TitleLabel" type="Label" parent="MainMenuUI"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
@@ -74,11 +78,24 @@ text = "Ursa Major"
 align = 1
 valign = 1
 
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -327.0
+margin_top = -217.0
+margin_right = 328.0
+margin_bottom = 217.0
+texture = ExtResource( 4 )
+expand = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI"]
-anchor_left = 1.0
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -310.0
+margin_left = -93.5
+margin_right = 93.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
