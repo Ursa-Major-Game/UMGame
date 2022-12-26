@@ -28,5 +28,6 @@ position = Vector2( 640, 360 )
 current = true
 
 [node name="StageNodesHandler" parent="." instance=ExtResource( 6 )]
+StoryFileName = "res://Levels/Stories/Entry.story"
 
 [connection signal="start_game" from="UILayer" to="." method="_on_UILayer_start_game"]

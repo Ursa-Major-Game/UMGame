@@ -27,7 +27,7 @@ align = 1
 [node name="Separator" type="ColorRect" parent="VBoxContainer"]
 margin_top = 45.0
 margin_right = 1280.0
-margin_bottom = 50.0
+margin_bottom = 45.0
 color = Color( 0.745098, 1, 1, 1 )
 
 [node name="DescriptionLabel" type="Label" parent="VBoxContainer"]

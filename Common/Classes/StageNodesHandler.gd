@@ -1,7 +1,7 @@
 extends Node
 
 export (int, 0, 100) var Progress = 0
-export (String, FILE, "*.tscn") var StoryFileName
+export (String, FILE, "*.story") var StoryFileName
 
 var ProgressFloat : float = 0.0
 var StoryConfigFile : ConfigFile
@@ -25,6 +25,6 @@ func load_story(s: String) -> ConfigFile:
 	var to = ConfigFile.new()
 	to.clear()
 	var err = to.load(s)
-	assert(err == OK)
-	
+	if err != OK:
+		Globals.die("Story not found", "can't open story file: " + s)
 	return to
