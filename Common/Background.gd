@@ -12,3 +12,9 @@ func close_view():
 	$AnimationPlayer.play("RESET")
 	yield($AnimationPlayer, "animation_finished")
 	emit_signal("closed")
+
+func get_limits_left() -> Vector2:
+	return $LeftSide/LeftPosition2D.global_position
+
+func get_limits_right() -> Vector2:
+	return $RightSide/RightPosition2D.global_position

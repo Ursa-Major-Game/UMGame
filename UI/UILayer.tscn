@@ -99,6 +99,7 @@ alignment = 1
 margin_top = 260.0
 margin_right = 187.0
 margin_bottom = 307.0
+disabled = true
 text = "Start"
 flat = true
 
@@ -106,6 +107,7 @@ flat = true
 margin_top = 311.0
 margin_right = 187.0
 margin_bottom = 358.0
+disabled = true
 text = "Bosses"
 flat = true
 
@@ -113,6 +115,7 @@ flat = true
 margin_top = 362.0
 margin_right = 187.0
 margin_bottom = 409.0
+disabled = true
 text = "Options"
 flat = true
 

@@ -15,6 +15,10 @@ export (int) var selection = 0 setget set_selection
 var selection_blob: PackedScene = preload("res://UI/SelectionBlob.tscn")
 var selection_blob_instance
 
+func enable_all_buttons(enable: bool = true):
+	for c in $MainMenuUI/HBoxContainer/VBoxContainer.get_children():
+		c.disabled = not enable
+
 func _ready():
 	$AnimationPlayer.play("ui_start")
 	yield($AnimationPlayer, "animation_finished")
@@ -24,6 +28,7 @@ func _ready():
 	add_child(selection_blob_instance)
 	selection_blob_instance.position = pos
 	emit_signal("ui_displayed")
+	enable_all_buttons()
 
 func set_selection(i: int):
 	var max_val = buttons_vbox.get_child_count() - 1
@@ -35,20 +40,18 @@ func set_selection(i: int):
 
 func trigger_selected_button():
 	var b: Button = buttons_vbox.get_child(selection)
+	if b.disabled: return
 	var s = b.get_signal_connection_list("pressed")[0]
 	call_deferred(s.method)
 
 func _on_StartButton_pressed():
 	emit_signal("start_game")
 
-
 func _on_BossesButton_pressed():
 	set_selection(1)
 
-
 func _on_OptionsButton_pressed():
 	set_selection(2)
-
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
@@ -62,7 +65,6 @@ func _process(delta):
 
 func vanish():
 	$AnimationPlayer.play("vanish")
-	$Background.open_view()
 	selection_blob_instance.vanish()
 	yield($AnimationPlayer, "animation_finished")
 	$MainMenuUI.hide()

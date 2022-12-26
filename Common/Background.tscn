@@ -108,6 +108,9 @@ scale = Vector2( 2.67152, 3.24743 )
 texture = ExtResource( 1 )
 centered = false
 
+[node name="LeftPosition2D" type="Position2D" parent="LeftSide"]
+position = Vector2( 670, 0 )
+
 [node name="RightSide" type="Node2D" parent="."]
 
 [node name="BackgroundColor" type="Sprite" parent="RightSide"]
@@ -124,6 +127,9 @@ position = Vector2( 663.29, 5 )
 scale = Vector2( 2.67333, 3.24743 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="RightPosition2D" type="Position2D" parent="RightSide"]
+position = Vector2( 660, 720 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/OpenView = SubResource( 7 )
