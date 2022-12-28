@@ -3,7 +3,7 @@
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Common/Fonts/futurespore.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/UILayer.gd" type="Script" id=3]
-[ext_resource path="res://UI/Window.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Window2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Common/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/PauseDialog.tscn" type="PackedScene" id=6]
 
@@ -79,7 +79,9 @@ text = "Ursa Major"
 align = 1
 valign = 1
 
-[node name="Window" parent="MainMenuUI" instance=ExtResource( 4 )]
+[node name="Window2" parent="MainMenuUI" instance=ExtResource( 4 )]
+margin_left = -326.5
+margin_right = 328.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI"]
 anchor_left = 0.5

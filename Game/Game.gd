@@ -3,7 +3,6 @@ extends Node2D
 export (PackedScene) var PlayerShip
 export (bool) var dbg_straight_to_game = false
 
-export (PackedScene) var Stage
 var PlayerShipInstance
 onready var SpawnPoint: Position2D = $SpawnPosition2D
 

@@ -76,6 +76,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Common/Globals.gd"
+ErrorHandler="*res://Common/Classes/ErrorHandler.gd"
 
 [display]
 

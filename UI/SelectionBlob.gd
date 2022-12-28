@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 signal blob_ready
 signal blob_arrived

@@ -26,5 +26,5 @@ func load_story(s: String) -> ConfigFile:
 	to.clear()
 	var err = to.load(s)
 	if err != OK:
-		Globals.die("Story not found", "can't open story file: " + s)
+		ErrorHandler.die("Story not found", "can't open story file: " + s)
 	return to

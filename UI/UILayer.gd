@@ -24,7 +24,7 @@ func _ready():
 	yield($AnimationPlayer, "animation_finished")
 	var pos = buttons_vbox.get_child(selection).rect_global_position + Vector2.DOWN * 24 + Vector2.LEFT * 28
 	selection_blob_instance = selection_blob.instance()
-	selection_blob_instance.modulate.a = 0
+	#selection_blob_instance.modulate.a = 0
 	add_child(selection_blob_instance)
 	selection_blob_instance.position = pos
 	emit_signal("ui_displayed")
