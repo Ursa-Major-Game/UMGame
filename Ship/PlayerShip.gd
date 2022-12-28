@@ -10,20 +10,32 @@ var input_movement = {
 
 var actions = {
 	"primary_weapon" : "fire_primary",
-	"secondary_weapon" : "fire_secondary"
+	"secondary_weapon" : "fire_secondary",
+	"all_weapons" : "fire_all"
 }
 
-func _physics_process(delta):
+export (int, 50, 1000) var thrust
+export (float, 0, 1) var bounciness
+var limits = {
+	"left": Vector2(0, 0),
+	"right" : Vector2(1280, 720)
+}
+
+func _ready():
+	bounce = bounciness
+
+func _integrate_forces(_state):
 	dir = Vector2.ZERO
 	for i in input_movement:
-		var m = "ui_%s" % [i]
+		var m = "move_%s" % [i]
 		if Input.is_action_pressed(m):
 			dir += input_movement[i]
 	dir = dir.normalized()
-	velocity = lerp(velocity, dir * max_speed * delta, acceleration)
-	position += velocity
-	global_position.x = clamp(global_position.x, 0, Globals.game_screen_width)
-	global_position.y = clamp(global_position.y, 0, Globals.game_screen_height)
+	applied_force = (dir * thrust).limit_length(max_speed)
+
+func _physics_process(delta):
+	global_position.x = clamp(global_position.x, limits.left.x, limits.right.x)
+	global_position.y = clamp(global_position.y, limits.left.y, limits.right.y)
 	var roll = lerp(dir.x, dir.x * 25, 0.2)
 	var pitch = lerp(dir.y, dir.y * 25, 0.2)
 	$Sprite.material.set_shader_param("x_rot", roll)
@@ -31,3 +43,5 @@ func _physics_process(delta):
 	
 	for a in actions:
 		if Input.is_action_pressed(a): call(actions[a])
+	
+	rotation = 0

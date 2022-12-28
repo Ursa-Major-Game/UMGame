@@ -8,7 +8,7 @@ func set_sprite_scale(s: float):
 	sprite_scale = Vector2(s, s)
 	$Sprite.scale = sprite_scale
 	$CollisionShape2D.scale *= sprite_scale/0.2
-	weight = s/0.2
+	weight = s/0.2 * 10
 
 func _ready():
 	dir = Vector2.ONE.rotated(rand_range(0, PI/2))

@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 signal blob_ready
 signal blob_arrived
@@ -13,7 +13,7 @@ func _physics_process(delta):
 	if target:
 		position = position.linear_interpolate(target, speed)
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	emit_signal("blob_ready")
 
 func vanish():

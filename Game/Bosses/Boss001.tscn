@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Ship/Ship001.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/Bosses/Boss001.gd" type="Script" id=2]
+
+[node name="Boss001" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Ship001" parent="." instance=ExtResource( 1 )]
+position = Vector2( 606, 167 )
+mass = 401.59
