@@ -4,3 +4,4 @@
 
 [node name="StageNodesHandler" type="Node"]
 script = ExtResource( 1 )
+StoryFileName = "res://Levels/Stories/Entry.story"

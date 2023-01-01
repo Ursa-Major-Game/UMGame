@@ -11,42 +11,42 @@ script/source = "extends Node2D
 script = SubResource( 1 )
 
 [node name="ShipTypeAMarkI" parent="." instance=ExtResource( 2 )]
-position = Vector2( 606, 46 )
+position = Vector2( 506, 65 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkI2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 682, 47 )
+position = Vector2( 756, 59 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkI3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 521, 50 )
+position = Vector2( 524, 218 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkI4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 612, 114 )
+position = Vector2( 594, 124 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkI5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 688, 115 )
+position = Vector2( 676, 124 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkI6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 527, 118 )
+position = Vector2( 767, 211 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
