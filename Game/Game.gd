@@ -32,6 +32,7 @@ func start_game():
 		add_player_ship()
 	$AsteroidsFactory/Timer.start()
 	can_pause = true
+	$StageNodesHandler.start()
 
 func pause_game():
 	if not can_pause: return
@@ -55,3 +56,7 @@ func _process(delta):
 	
 func _on_UILayer_start_game(level = 0):
 	start_game()
+
+
+func _on_StageNodesHandler_Progressed(seconds):
+	$UIDebugLayer/VBoxContainer/HBoxContainer/MessageLabel.text = String(seconds)

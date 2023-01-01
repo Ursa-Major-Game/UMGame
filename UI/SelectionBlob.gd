@@ -18,3 +18,6 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 func vanish():
 	$AnimationPlayer.play("vanish")
+	
+func appear():
+	$AnimationPlayer.play("vanish", -1, -1, true)
