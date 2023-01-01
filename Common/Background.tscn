@@ -174,18 +174,18 @@ centered = false
 [node name="Grid" type="Sprite" parent="LeftSide"]
 modulate = Color( 1, 1, 1, 0.254902 )
 material = SubResource( 6 )
-position = Vector2( 23, 5 )
+position = Vector2( 3, 5 )
 scale = Vector2( 2.67152, 3.24743 )
 texture = ExtResource( 1 )
 centered = false
 
 [node name="LeftPosition2D" type="Position2D" parent="LeftSide"]
-position = Vector2( 670, 0 )
+position = Vector2( 639, 2 )
 
 [node name="ColorRect" type="ColorRect" parent="LeftSide"]
 material = SubResource( 10 )
-margin_left = 619.0
-margin_right = 659.0
+margin_left = 600.0
+margin_right = 640.0
 margin_bottom = 720.0
 
 [node name="RightSide" type="Node2D" parent="."]
@@ -208,12 +208,12 @@ centered = false
 
 [node name="ColorRect2" type="ColorRect" parent="RightSide"]
 material = SubResource( 17 )
-margin_left = 659.0
-margin_right = 699.0
+margin_left = 638.0
+margin_right = 678.0
 margin_bottom = 720.0
 
 [node name="RightPosition2D" type="Position2D" parent="RightSide"]
-position = Vector2( 660, 720 )
+position = Vector2( 644, 721 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/OpenView = SubResource( 7 )

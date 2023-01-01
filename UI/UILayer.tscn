@@ -56,6 +56,7 @@ tracks/0/keys = {
 }
 
 [node name="UILayer" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
@@ -145,6 +146,8 @@ visible = false
 anims/RESET = SubResource( 2 )
 anims/ui_start = SubResource( 3 )
 anims/vanish = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/BossesButton" to="." method="_on_BossesButton_pressed"]

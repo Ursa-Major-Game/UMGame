@@ -9,7 +9,7 @@ func open_view():
 	emit_signal("opened")
 	
 func close_view():
-	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("OpenView", -1, -1, true)
 	yield($AnimationPlayer, "animation_finished")
 	emit_signal("closed")
 

@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="UIDebugLayer" type="CanvasLayer"]
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_right = 239.0
+margin_bottom = 56.0
+text = "Debug"

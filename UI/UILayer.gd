@@ -69,3 +69,12 @@ func vanish():
 	yield($AnimationPlayer, "animation_finished")
 	$MainMenuUI.hide()
 	set_process(false)
+
+func reappear():
+	$Background.close_view()
+	$AnimationPlayer.play("vanish", -1, -1, true)
+	yield($AnimationPlayer, "animation_finished")
+	$MainMenuUI.modulate.a = 1.0
+	$MainMenuUI.show()
+	emit_signal("ui_displayed")
+	set_process(true)
