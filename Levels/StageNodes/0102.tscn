@@ -1,52 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Ship/Ships/ShipTypeAMarkI.tscn" type="PackedScene" id=2]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-"
-
 [node name="0101" type="Node2D"]
-script = SubResource( 1 )
 
 [node name="ShipTypeAMarkI" parent="." instance=ExtResource( 2 )]
-position = Vector2( 506, 65 )
+position = Vector2( 627, -74 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkI2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 756, 59 )
-rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ShipTypeAMarkI3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 524, 218 )
-rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ShipTypeAMarkI4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 594, 124 )
-rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ShipTypeAMarkI5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 676, 124 )
-rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ShipTypeAMarkI6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 767, 211 )
+position = Vector2( 634, 164 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true

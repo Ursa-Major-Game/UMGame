@@ -6,8 +6,10 @@
 
 [node name="LaserWeapon01" instance=ExtResource( 1 )]
 AmmoType = ExtResource( 2 )
-AmmoScale = 0.35
-AmmoSpeed = 50.0
+AmmoScale = 0.15
+AmmoSpeed = 25.0
+AmmoNumber = 3
+spacing_angle = 15.0
 
 [node name="Muzzle" parent="." index="0"]
 position = Vector2( 0, -37 )
