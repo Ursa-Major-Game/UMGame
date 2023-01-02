@@ -17,7 +17,7 @@ extents = Vector2( 5, 10 )
 
 [node name="ShipTypeAMarkI" instance=ExtResource( 1 )]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 mass = 50.0
 linear_velocity = Vector2( 0, 50 )
 Primary = ExtResource( 3 )

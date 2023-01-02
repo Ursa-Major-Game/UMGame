@@ -131,7 +131,11 @@ height = 18.0
 extents = Vector2( 5, 10 )
 
 [node name="Ship" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
 mass = 0.277778
+contacts_reported = 1
+contact_monitor = true
 linear_damp = 0.0
 script = ExtResource( 1 )
 max_speed = 350
@@ -162,3 +166,7 @@ shape = SubResource( 6 )
 [node name="PrimaryAnchor" type="Position2D" parent="."]
 
 [node name="SecondaryAnchor" type="Position2D" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_Ship_body_entered"]

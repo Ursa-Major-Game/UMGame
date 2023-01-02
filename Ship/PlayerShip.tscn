@@ -6,6 +6,8 @@
 [ext_resource path="res://Weapons/LaserWeapon01.tscn" type="PackedScene" id=4]
 
 [node name="PlayerShip" instance=ExtResource( 1 )]
+collision_layer = 1
+collision_mask = 6
 linear_damp = 2.0
 script = ExtResource( 2 )
 acceleration = 0.2

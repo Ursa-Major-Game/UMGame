@@ -1,6 +1,8 @@
 extends SpaceObjectBody
 class_name Ship
 
+var bomb = preload("res://Gameplay/Items/Bomb.tscn")
+
 export (float, 0.0, 0.2) var acceleration = 0.1
 export (PackedScene) var Primary
 export (Color) var PrimaryModulate = Color.white
@@ -13,6 +15,15 @@ export (GDScript) var AIScript
 var PW_instance : Weapon
 var SW_instance : Weapon
 var AI_instance : AI
+
+func destroy():
+	call_deferred("set_contact_monitor", false)
+	$Sprite.visible = false
+	var B = bomb.instance()
+	get_tree().get_root().add_child(B)
+	B.global_position = global_position
+	yield(B, "child_exiting_tree")
+	queue_free()
 
 func _ready():
 	if AIScript:
@@ -38,12 +49,21 @@ func show():
 
 func fire_primary():
 	if PW_instance: 
-		PW_instance.fire_ammo(get_tree().root, PrimaryModulate)
+		var c = {}
+		c.remove_mask = collision_layer
+		PW_instance.fire_ammo(get_tree().root, PrimaryModulate, c)
 	
 func fire_secondary():
 	if SW_instance: 
-		SW_instance.fire_ammo(get_tree().root, SecondaryModulate)
+		var c = {}
+		c.remove_mask = collision_layer
+		SW_instance.fire_ammo(get_tree().root, SecondaryModulate, c)
 
 func fire_all():
 	fire_primary()
 	fire_secondary()
+
+
+func _on_Ship_body_entered(body):
+	if body is Ammo:
+		destroy()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/UILayer.tscn" type="PackedScene" id=2]
@@ -7,6 +7,37 @@
 [ext_resource path="res://Game/AsteroidsFactory.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Common/Classes/StageNodesHandler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UIDebugLayer.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform int levels = 3;
+uniform float spread = 0.01;
+
+vec3 chromatic_slice(float t){
+	vec3 res = vec3(1.0-t, 1.0 - abs(t - 1.0), t - 1.0);
+	return max(res, 0.0);
+}
+
+void fragment(){
+	vec3 sum;
+	COLOR.rgb = vec3(0);
+	vec2 offset = (UV - vec2(0.5))*vec2(1,-1);
+	for(int i = 0; i < levels; i++){
+		float t = 2.0*float(i)/float(levels-1); // range 0.0->2.0
+		vec3 slice = vec3(1.0-t, 1.0 - abs(t - 1.0), t - 1.0);
+		slice = max(slice, 0.0);
+		sum += slice;
+		vec2 slice_offset = (t-1.0)*spread*offset;
+		COLOR.rgb += slice * texture(SCREEN_TEXTURE, SCREEN_UV + slice_offset).rgb;
+	}
+	COLOR.rgb /= sum;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/levels = 3
+shader_param/spread = 0.01
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -28,9 +59,18 @@ position = Vector2( 640, 360 )
 current = true
 
 [node name="StageNodesHandler" parent="." instance=ExtResource( 6 )]
+Progress = 4
 
 [node name="UIDebugLayer" parent="." instance=ExtResource( 7 )]
 visible = false
+
+[node name="ShaderCanvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ShaderCanvas"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 
 [connection signal="start_game" from="UILayer" to="." method="_on_UILayer_start_game"]
 [connection signal="Progressed" from="StageNodesHandler" to="." method="_on_StageNodesHandler_Progressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.82
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.33
+radial_accel = 4.17
+radial_accel_random = 0.22
+damping_random = 0.35
+scale_random = 0.67
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
+hue_variation = 0.04
+hue_variation_random = 0.22
+
+[node name="Smoke" type="Node2D"]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 50
+randomness = 0.14
+process_material = SubResource( 1 )

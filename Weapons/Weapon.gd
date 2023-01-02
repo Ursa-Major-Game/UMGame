@@ -20,7 +20,7 @@ func _ready():
 func make_ammo() -> Ammo:
 	return  AmmoType.instance()
 
-func fire_ammo(N: Object = get_tree().root, tint: Color = Color.white):
+func fire_ammo(N: Object = get_tree().root, tint: Color = Color.white, collisions : Dictionary = {}):
 	if not _can_fire: return
 	
 	var c = 1
@@ -32,6 +32,9 @@ func fire_ammo(N: Object = get_tree().root, tint: Color = Color.white):
 		A.dir = A.dir.rotated(c * deg2rad(spacing_angle))
 		A.global_position = _Muzzle.global_position
 		A.scale = Vector2(AmmoScale, AmmoScale)
+		if collisions.has("layer") : A.set_collision_layer(collisions.layer)
+		if collisions.has("mask"): A.set_collision_mask(collisions.mask)
+		if collisions.has("remove_mask"): A.remove_mask(collisions.remove_mask-1)
 		c = c * (-1)
 	
 	_can_fire = false
