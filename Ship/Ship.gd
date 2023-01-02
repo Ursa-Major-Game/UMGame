@@ -16,14 +16,19 @@ var PW_instance : Weapon
 var SW_instance : Weapon
 var AI_instance : AI
 
-func destroy():
+func destroy(remove = true):
 	call_deferred("set_contact_monitor", false)
+	var coll_info = {}
+	coll_info.layer = collision_layer
+	coll_info.mask = collision_mask
+	collision_layer = 0
+	collision_mask = 0
 	$Sprite.visible = false
 	var B = bomb.instance()
 	get_tree().get_root().add_child(B)
 	B.global_position = global_position
 	yield(B, "child_exiting_tree")
-	queue_free()
+	if remove: queue_free()
 
 func _ready():
 	if AIScript:

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Ship/Engine/Engine.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PhysicsMaterial" id=7]
 
 [sub_resource type="Shader" id=3]
 code = "// Hey this is Hei! This shader \"fakes\" a 3D-camera perspective on CanvasItems.
@@ -134,6 +136,7 @@ extents = Vector2( 5, 10 )
 collision_layer = 0
 collision_mask = 0
 mass = 0.277778
+physics_material_override = SubResource( 7 )
 contacts_reported = 1
 contact_monitor = true
 linear_damp = 0.0

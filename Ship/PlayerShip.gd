@@ -23,6 +23,9 @@ var limits = {
 
 func _ready():
 	bounce = bounciness
+	
+func destroy(remove = false):
+	.destroy(false)
 
 func _integrate_forces(_state):
 	dir = Vector2.ZERO
