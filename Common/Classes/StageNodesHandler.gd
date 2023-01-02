@@ -45,7 +45,7 @@ func load_stages():
 	for s in StoryConfigFile.get_sections():
 		if not (s == "Meta"):
 			LoadedStages[s] = load_levels(StoryConfigFile.get_value(s, "levels"))
-		else:
+		elif (s == "Meta"):
 			StageOrder = StoryConfigFile.get_value(s, "order")
 
 func start():

@@ -11,8 +11,12 @@ var input_movement = {
 var actions = {
 	"primary_weapon" : "fire_primary",
 	"secondary_weapon" : "fire_secondary",
+	"focus_mode": "focus_weapons",
 	"all_weapons" : "fire_all"
 }
+
+var change_focus = false
+var focused = false
 
 export (int, 50, 1000) var thrust
 export (float, 0, 1) var bounciness
@@ -21,11 +25,19 @@ var limits = {
 	"right" : Vector2(1280, 720)
 }
 
-func _ready():
-	bounce = bounciness
+func focus_weapons():
+	change_focus = true
+	if not change_focus and not focused:
+		$AnimationPlayer.play("focus_weapons")
+
+func reset():
+	collision_layer = coll_info.layer
+	collision_mask = coll_info.mask
+	$Sprite.visible = true
 	
-func destroy(remove = false):
+func destroy(remove = false, no_bomb = false):
 	.destroy(false)
+	$RespawnTimer.start()
 
 func _integrate_forces(_state):
 	dir = Vector2.ZERO
@@ -48,3 +60,15 @@ func _physics_process(delta):
 		if Input.is_action_pressed(a): call(actions[a])
 	
 	rotation = 0
+	if not change_focus or focused:
+		$AnimationPlayer.play_backwards("focus_weapons")
+	change_focus = false
+
+
+func _on_RespawnTimer_timeout():
+	reset()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "focus_weapons":
+		change_focus = false

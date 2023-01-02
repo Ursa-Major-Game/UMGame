@@ -1,6 +1,13 @@
-extends Node2D
+extends Area2D
 
 func _ready():
 	$AnimationPlayer.play("expand")
-	yield($AnimationPlayer, "animation_finished")
+
+func _on_Bomb_body_entered(body):
+	body.destroy()
+
+func _on_Timer_timeout():
+	pass # Replace with function body.
+
+func _on_AnimationPlayer_animation_finished(anim_name):
 	queue_free()

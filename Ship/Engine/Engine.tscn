@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Ship/Engine/Engine.gd" type="Script" id=1]
 [ext_resource path="res://Common/Shaders/shaderplaceholder.png" type="Texture" id=2]
+[ext_resource path="res://Ship/Particles/Smoke.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -127,3 +128,6 @@ position = Vector2( 0, 33 )
 scale = Vector2( 0.0477626, 0.0545937 )
 texture = ExtResource( 2 )
 flip_v = true
+
+[node name="Smoke" parent="Origin" instance=ExtResource( 3 )]
+position = Vector2( 0, 27 )

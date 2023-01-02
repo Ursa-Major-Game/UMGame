@@ -6,7 +6,7 @@
 
 [node name="LaserWeapon01" instance=ExtResource( 1 )]
 AmmoType = ExtResource( 2 )
-AmmoScale = 0.35
+AmmoScale = 0.15
 AmmoSpeed = 50.0
 
 [node name="Muzzle" parent="." index="0"]

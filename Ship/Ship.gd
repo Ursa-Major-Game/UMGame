@@ -10,21 +10,27 @@ export (PackedScene) var Secondary
 export (Color) var SecondaryModulate = Color.white
 export (float, 0.1, 2.0) var PrimaryScale = 1.0
 export (float, 0.1, 2.0) var SecondaryScale = 1.0
-export (GDScript) var AIScript
+export (PackedScene) var AIScript
 
 var PW_instance : Weapon
 var SW_instance : Weapon
 var AI_instance : AI
 
-func destroy(remove = true):
-	call_deferred("set_contact_monitor", false)
-	var coll_info = {}
+var coll_info: Dictionary
+
+func destroy(remove = true, no_bomb = true):
+	var lbit = get_collision_layer_bits()[0]
 	coll_info.layer = collision_layer
 	coll_info.mask = collision_mask
-	collision_layer = 0
-	collision_mask = 0
+	collision_layer = 8
+	collision_mask = 8
 	$Sprite.visible = false
+	if no_bomb: 
+		if remove: 
+			queue_free()
+			return
 	var B = bomb.instance()
+	B.set_collision_mask_bit(lbit, false)
 	get_tree().get_root().add_child(B)
 	B.global_position = global_position
 	yield(B, "child_exiting_tree")
@@ -32,7 +38,7 @@ func destroy(remove = true):
 
 func _ready():
 	if AIScript:
-		AI_instance = AIScript.new()
+		AI_instance = AIScript.instance()
 		add_child(AI_instance)
 		AI_instance.connect("fire_all", self, "fire_all")
 	show()
@@ -55,13 +61,13 @@ func show():
 func fire_primary():
 	if PW_instance: 
 		var c = {}
-		c.remove_mask = collision_layer
+		c.remove_mask_bits = get_collision_layer_bits()
 		PW_instance.fire_ammo(get_tree().root, PrimaryModulate, c)
 	
 func fire_secondary():
 	if SW_instance: 
 		var c = {}
-		c.remove_mask = collision_layer
+		c.remove_mask_bits = get_collision_layer_bits()
 		SW_instance.fire_ammo(get_tree().root, SecondaryModulate, c)
 
 func fire_all():
@@ -70,5 +76,4 @@ func fire_all():
 
 
 func _on_Ship_body_entered(body):
-	if body is Ammo:
-		destroy()
+	call_deferred("destroy")

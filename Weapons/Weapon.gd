@@ -34,7 +34,10 @@ func fire_ammo(N: Object = get_tree().root, tint: Color = Color.white, collision
 		A.scale = Vector2(AmmoScale, AmmoScale)
 		if collisions.has("layer") : A.set_collision_layer(collisions.layer)
 		if collisions.has("mask"): A.set_collision_mask(collisions.mask)
-		if collisions.has("remove_mask"): A.remove_mask(collisions.remove_mask-1)
+		if collisions.has("remove_mask"): A.remove_mask(collisions.remove_mask)
+		if collisions.has("remove_mask_bits"):
+			for mbit in collisions.remove_mask_bits:
+				A.set_collision_mask_bit(mbit, false)
 		c = c * (-1)
 	
 	_can_fire = false

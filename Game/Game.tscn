@@ -37,7 +37,7 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/levels = 3
-shader_param/spread = 0.01
+shader_param/spread = 0.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
