@@ -5,13 +5,21 @@ export (bool) var dbg_straight_to_game = false
 
 var game_input = {
 	"pause": "pause_game",
-	"debug_toggle": "debug_toggle"
+	"debug_toggle": "debug_toggle",
+	"debug_unzoom_cam" : "unzoom",
+	"debug_reset_zoom": "reset_zoom"
 }
 
 var can_pause:= false
 
 var PlayerShipInstance
 onready var SpawnPoint: Position2D = $SpawnPosition2D
+
+func unzoom():
+	$Camera2D.zoom = Vector2(2, 2)
+
+func reset_zoom():
+	$Camera2D.zoom = Vector2.ONE
 
 func add_player_ship():
 	if PlayerShipInstance: return
@@ -60,3 +68,7 @@ func _on_UILayer_start_game(_level = 0):
 
 func _on_StageNodesHandler_Progressed(seconds):
 	$UIDebugLayer/VBoxContainer/HBoxContainer/MessageLabel.text = String(seconds)
+
+
+func _on_StageNodesHandler_say(text):
+	$Annoucer.announce(text)

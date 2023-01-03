@@ -19,6 +19,7 @@ var AI_instance : AI
 var coll_info: Dictionary
 
 var invincible = true
+var active = false
 
 func destroy(remove = true, no_bomb = true):
 	var lbit = get_collision_layer_bits()[0]
@@ -33,7 +34,7 @@ func destroy(remove = true, no_bomb = true):
 			return
 	var B = bomb.instance()
 	B.set_collision_mask_bit(lbit, false)
-	get_tree().get_root().add_child(B)
+	get_tree().get_root().call_deferred("add_child", B)
 	B.global_position = global_position
 	yield(B, "child_exiting_tree")
 	if remove: queue_free()
@@ -84,3 +85,15 @@ func _on_Ship_body_entered(body):
 
 func _on_InvincibleTimer_timeout():
 	invincible = false
+
+
+func _on_ActiveTimer_timeout():
+	active = true
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	active = true
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	if active: destroy()

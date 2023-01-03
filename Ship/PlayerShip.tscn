@@ -62,12 +62,6 @@ position = Vector2( 22, 25 )
 [node name="Wing2" parent="." index="5"]
 position = Vector2( -22, 25 )
 
-[node name="PrimaryAnchor" parent="." index="6"]
-position = Vector2( 39, -37 )
-
-[node name="SecondaryAnchor" parent="." index="7"]
-position = Vector2( -42, -36 )
-
 [node name="RespawnTimer" type="Timer" parent="." index="9"]
 wait_time = 3.0
 one_shot = true

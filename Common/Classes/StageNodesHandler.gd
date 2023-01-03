@@ -2,6 +2,7 @@ extends Node
 
 signal Progressed(seconds)
 signal EndOfStory
+signal say(text)
 
 export (int, 0, 100) var Progress = 0
 export (String, FILE, "*.story") var StoryFileName
@@ -11,24 +12,26 @@ var StoryConfigFile : ConfigFile
 var LoadedStages := {}
 
 var story_name : String
-var current_stage_id: int = 0 setget set_current_stage_index
+var current_stage_id: int = -1 setget set_current_stage_index
 var current_stage : String
 var StageOrder : Array
 
 var LastLevelTime : float = 0.0
 
 func set_current_stage_index(idx: int):
-	if idx >= StageOrder.size():
+	if idx >= StageOrder.size() - 1:
 		ErrorHandler.die("Story " + story_name, "stage index not in stages array")
 	current_stage_id = idx
 	current_stage = StageOrder[idx]
 
 func goto_next_stage():
-	if current_stage_id >= StageOrder.size():
+	restartProgress()
+	if current_stage_id >= StageOrder.size() - 1:
 		emit_signal("EndOfStory")
 		ErrorHandler.die("End of Story" + story_name, "")
 	else:
 		set_current_stage_index(current_stage_id + 1)
+		emit_signal("say", current_stage)
 
 func load_level(levelname: String) -> Level:
 	var L : Level = Level.new()
@@ -53,7 +56,7 @@ func load_stages():
 
 func start():
 	set_physics_process(true)
-	set_current_stage_index(0)
+	goto_next_stage()
 	
 func restartProgress():
 	Progress = 0
@@ -76,8 +79,6 @@ func _physics_process(delta):
 		
 		if Progress >= LastLevelTime:
 			var cc = get_child_count()
-			var c1 = get_children()[0]
-			print(c1.position)
 			if cc == 0: 
 				goto_next_stage()
 
