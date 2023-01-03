@@ -15,7 +15,7 @@ var actions = {
 	"all_weapons" : "fire_all"
 }
 
-var change_focus = false
+var toggle_focus = false
 var focused = false
 
 export (int, 50, 1000) var thrust
@@ -26,9 +26,13 @@ var limits = {
 }
 
 func focus_weapons():
-	change_focus = true
-	if not change_focus and not focused:
-		$AnimationPlayer.play("focus_weapons")
+	if not focused:
+		if not $AnimationPlayer.is_playing():
+			$AnimationPlayer.play("focus_weapons")
+			
+func unfocus_weapons():
+	if not $AnimationPlayer.is_playing():
+		$AnimationPlayer.play_backwards("focus_weapons")
 
 func reset():
 	collision_layer = coll_info.layer
@@ -60,15 +64,16 @@ func _physics_process(delta):
 		if Input.is_action_pressed(a): call(actions[a])
 	
 	rotation = 0
-	if not change_focus or focused:
-		$AnimationPlayer.play_backwards("focus_weapons")
-	change_focus = false
-
+	if not toggle_focus:
+		if focused:
+			if not Input.is_action_pressed("focus_mode"):
+				unfocus_weapons()
+	
 
 func _on_RespawnTimer_timeout():
 	reset()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "focus_weapons":
-		change_focus = false
+	match anim_name:
+		"focus_weapons": focused = not focused
