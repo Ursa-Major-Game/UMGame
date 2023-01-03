@@ -9,5 +9,5 @@ func _on_Bomb_body_entered(body):
 func _on_Timer_timeout():
 	pass # Replace with function body.
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	queue_free()

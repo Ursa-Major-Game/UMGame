@@ -18,6 +18,8 @@ var AI_instance : AI
 
 var coll_info: Dictionary
 
+var invincible = true
+
 func destroy(remove = true, no_bomb = true):
 	var lbit = get_collision_layer_bits()[0]
 	coll_info.layer = collision_layer
@@ -40,7 +42,7 @@ func _ready():
 	if AIScript:
 		AI_instance = AIScript.instance()
 		add_child(AI_instance)
-		AI_instance.connect("fire_all", self, "fire_all")
+		var _err = AI_instance.connect("fire_all", self, "fire_all")
 	show()
 	yield($AnimationPlayer,"animation_finished")
 	if Primary:
@@ -76,4 +78,9 @@ func fire_all():
 
 
 func _on_Ship_body_entered(body):
-	call_deferred("destroy")
+	if not invincible: call_deferred("destroy")
+	body.destroy()
+
+
+func _on_InvincibleTimer_timeout():
+	invincible = false

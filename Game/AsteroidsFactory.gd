@@ -1,8 +1,8 @@
 extends Node2D
 
 export (PackedScene) var asteroid = preload("res://Asteroid/Asteroid.tscn")
-export (float, 0, 10) var salvo_frequency = 3 #per minutes
-export (float, 0, 10) var salvo_duration = 1 #seconds
+export (float, 0, 10) var salvo_frequency = 3.0 #per minutes
+export (float, 0, 10) var salvo_duration = 1.0 #seconds
 export (int, 0, 10) var asteroids_per_salvo = 5
 
 func _ready():

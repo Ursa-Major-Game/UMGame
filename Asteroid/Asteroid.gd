@@ -13,7 +13,10 @@ func set_sprite_scale(s: float):
 func _ready():
 	dir = Vector2.ONE.rotated(rand_range(0, PI/2))
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 	#velocity = dir * delta * max_speed
 	#rotation += rotation_speed * delta
+
+func destroy():
+	queue_free()

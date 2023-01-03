@@ -1,7 +1,6 @@
 extends Node2D
 
 signal blob_ready
-signal blob_arrived
 
 export (Vector2) var target
 export (float, 0.01, 0.09) var speed = 0.05
@@ -9,7 +8,7 @@ export (float, 0.01, 0.09) var speed = 0.05
 func _ready():
 	$AnimationPlayer.play("enter_tree")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if target:
 		position = position.linear_interpolate(target, speed)
 

@@ -15,7 +15,7 @@ var actions = {
 	"all_weapons" : "fire_all"
 }
 
-var toggle_focus = false
+export (bool) var toggle_focus = false
 var focused = false
 
 export (int, 50, 1000) var thrust
@@ -39,7 +39,7 @@ func reset():
 	collision_mask = coll_info.mask
 	$Sprite.visible = true
 	
-func destroy(remove = false, no_bomb = false):
+func destroy(_remove = false, _no_bomb = false):
 	.destroy(false)
 	$RespawnTimer.start()
 
@@ -52,7 +52,7 @@ func _integrate_forces(_state):
 	dir = dir.normalized()
 	applied_force = (dir * thrust).limit_length(max_speed)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	global_position.x = clamp(global_position.x, limits.left.x, limits.right.x)
 	global_position.y = clamp(global_position.y, limits.left.y, limits.right.y)
 	var roll = lerp(dir.x, dir.x * 25, 0.2)

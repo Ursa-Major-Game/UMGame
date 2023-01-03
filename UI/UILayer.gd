@@ -1,6 +1,5 @@
 extends CanvasLayer
 signal start_game(level)
-signal paused
 signal ui_displayed
 
 var ui_input = {
@@ -55,7 +54,7 @@ func _on_OptionsButton_pressed():
 func _on_QuitButton_pressed():
 	get_tree().quit()
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		trigger_selected_button()
 	for i in ui_input:

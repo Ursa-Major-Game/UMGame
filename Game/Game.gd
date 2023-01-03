@@ -49,12 +49,12 @@ func _ready():
 func debug_toggle():
 	$UIDebugLayer.visible = not $UIDebugLayer.visible
 
-func _process(delta):
+func _process(_delta):
 	for gi in game_input.keys():
 		if Input.is_action_just_pressed(gi):
 			call(game_input[gi])
 	
-func _on_UILayer_start_game(level = 0):
+func _on_UILayer_start_game(_level = 0):
 	start_game()
 
 

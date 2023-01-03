@@ -15,6 +15,8 @@ var current_stage_id: int = 0 setget set_current_stage_index
 var current_stage : String
 var StageOrder : Array
 
+var LastLevelTime : float = 0.0
+
 func set_current_stage_index(idx: int):
 	if idx >= StageOrder.size():
 		ErrorHandler.die("Story " + story_name, "stage index not in stages array")
@@ -38,6 +40,7 @@ func load_levels(levelnamedict: Dictionary) -> Dictionary:
 	var dict := {}
 	for l in levelnamedict.keys():
 		var app_time = levelnamedict[l]
+		LastLevelTime = max(LastLevelTime, app_time)
 		dict[app_time] = load_level(l)
 	return dict
 
@@ -51,9 +54,13 @@ func load_stages():
 func start():
 	set_physics_process(true)
 	set_current_stage_index(0)
+	
+func restartProgress():
+	Progress = 0
+	ProgressFloat = float(Progress)
 
 func _ready():
-	ProgressFloat = float(Progress)
+	restartProgress()
 	StoryConfigFile = load_story(StoryFileName)
 	load_stages()
 	set_physics_process(false)
@@ -64,8 +71,15 @@ func _physics_process(delta):
 	Progress = round(ProgressFloat)
 	if oldProgress != Progress: 
 		emit_signal("Progressed", Progress)
-		if LoadedStages["Stage01"].has(int(Progress)): 
+		if LoadedStages[current_stage].has(int(Progress)): 
 			LoadedStages[current_stage][int(Progress)].transfer_nodes_to(self)
+		
+		if Progress >= LastLevelTime:
+			var cc = get_child_count()
+			var c1 = get_children()[0]
+			print(c1.position)
+			if cc == 0: 
+				goto_next_stage()
 
 func load_story(s: String) -> ConfigFile:
 	var to = ConfigFile.new()

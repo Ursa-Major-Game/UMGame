@@ -59,7 +59,7 @@ position = Vector2( 640, 360 )
 current = true
 
 [node name="StageNodesHandler" parent="." instance=ExtResource( 6 )]
-Progress = 4
+Progress = 20
 
 [node name="UIDebugLayer" parent="." instance=ExtResource( 7 )]
 visible = false

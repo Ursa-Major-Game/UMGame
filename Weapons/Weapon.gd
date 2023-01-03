@@ -6,7 +6,7 @@ export (float, 0.1, 2) var AmmoScale = 1.0
 export (float) var AmmoSpeed = 100.0
 export (float, 1, 50) var RateOfFire = 10.0 # per seconds
 export (int, 1, 5) var AmmoNumber = 1
-export (float) var spacing_angle = 0
+export (float) var spacing_angle = 0.0
 
 var _AInstance : Ammo
 onready var _Muzzle := $Muzzle

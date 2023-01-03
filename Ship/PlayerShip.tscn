@@ -40,6 +40,7 @@ script = ExtResource( 2 )
 acceleration = 0.2
 Primary = ExtResource( 4 )
 Secondary = ExtResource( 4 )
+toggle_focus = false
 thrust = 350
 bounciness = 0.5
 
