@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Common/Fonts/futurespore.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/Window2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Common/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/PauseDialog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/ShipInfoUI.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -148,8 +149,10 @@ anims/RESET = SubResource( 2 )
 anims/ui_start = SubResource( 3 )
 anims/vanish = SubResource( 4 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="ShipInfoUI" parent="." instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 0 )
 
+[connection signal="start_game" from="." to="." method="_on_UILayer_start_game"]
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/BossesButton" to="." method="_on_BossesButton_pressed"]
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]

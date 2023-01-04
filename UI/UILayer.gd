@@ -1,5 +1,5 @@
 extends CanvasLayer
-signal start_game(level)
+signal start_game()
 signal ui_displayed
 
 var ui_input = {
@@ -78,3 +78,7 @@ func reappear():
 	emit_signal("ui_displayed")
 	set_process(true)
 	selection_blob_instance.appear()
+
+
+func _on_UILayer_start_game():
+	$ShipInfoUI.appear()

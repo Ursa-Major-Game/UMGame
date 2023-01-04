@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/UIBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/ShipInfoUI.gd" type="Script" id=2]
+[ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=3]
+
+[node name="ShipInfoUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_right = -928.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 342.0
+margin_bottom = 58.0
+text = "Health"
+align = 1
+
+[node name="UIBar" parent="VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 62.0
+margin_right = 342.0
+margin_bottom = 62.0

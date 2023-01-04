@@ -89,6 +89,7 @@ config/icon="res://icon.png"
 
 Globals="*res://Common/Globals.gd"
 ErrorHandler="*res://Common/Classes/ErrorHandler.gd"
+GamePlayerInfo="*res://Common/GamePlayerInfo.gd"
 
 [display]
 
