@@ -17,15 +17,16 @@ var current_stage : String
 var StageOrder : Array
 
 var LastLevelTime : float = 0.0
+onready var InitialProgress = Progress
 
 func set_current_stage_index(idx: int):
-	if idx >= StageOrder.size() - 1:
-		ErrorHandler.die("Story " + story_name, "stage index not in stages array")
+	if idx > StageOrder.size() - 1:
+		ErrorHandler.die("Story " + story_name, "stage index not in stages array. index: " + String(idx))
 	current_stage_id = idx
 	current_stage = StageOrder[idx]
 
 func goto_next_stage():
-	restartProgress()
+	restartProgress(0)
 	if current_stage_id >= StageOrder.size() - 1:
 		emit_signal("EndOfStory")
 		ErrorHandler.die("End of Story" + story_name, "")
@@ -58,8 +59,8 @@ func start():
 	set_physics_process(true)
 	goto_next_stage()
 	
-func restartProgress():
-	Progress = 0
+func restartProgress(i : int = InitialProgress):
+	Progress = i
 	ProgressFloat = float(Progress)
 
 func _ready():
