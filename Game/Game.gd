@@ -41,6 +41,7 @@ func start_game():
 	$AsteroidsFactory/Timer.start()
 	can_pause = true
 	$StageNodesHandler.start()
+	GamePlayerInfo.reset()
 
 func pause_game():
 	if not can_pause: return
