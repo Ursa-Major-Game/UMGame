@@ -128,7 +128,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -300, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -250, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -180,7 +180,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="LeftPosition2D" type="Position2D" parent="LeftSide"]
-position = Vector2( 639, 2 )
+position = Vector2( 640, 0 )
 
 [node name="ColorRect" type="ColorRect" parent="LeftSide"]
 material = SubResource( 10 )
@@ -213,7 +213,7 @@ margin_right = 678.0
 margin_bottom = 720.0
 
 [node name="RightPosition2D" type="Position2D" parent="RightSide"]
-position = Vector2( 644, 721 )
+position = Vector2( 640, 720 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/OpenView = SubResource( 7 )

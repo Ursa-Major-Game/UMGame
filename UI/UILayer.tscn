@@ -62,6 +62,7 @@ script = ExtResource( 3 )
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="MainMenuUI" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

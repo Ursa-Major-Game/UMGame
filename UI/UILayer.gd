@@ -19,6 +19,7 @@ func enable_all_buttons(enable: bool = true):
 		c.disabled = not enable
 
 func _ready():
+	$MainMenuUI.visible = true
 	$AnimationPlayer.play("ui_start")
 	yield($AnimationPlayer, "animation_finished")
 	var pos = buttons_vbox.get_child(selection).rect_global_position + Vector2.DOWN * 24 + Vector2.LEFT * 28
