@@ -34,6 +34,8 @@ func goto_next_stage():
 	else:
 		set_current_stage_index(current_stage_id + 1)
 		emit_signal("say", current_stage)
+		if StoryConfigFile.has_section_key(current_stage, "start_message"):
+			emit_signal("say", StoryConfigFile.get_value(current_stage, "start_message"))
 
 func get_loaded_stage_levels(stage_name: String) -> Dictionary:
 	var StageConf := load_conf_file("res://Levels/Stages/" + stage_name + ".stage")
@@ -43,6 +45,8 @@ func get_loaded_stage_levels(stage_name: String) -> Dictionary:
 		var L = Level.new()
 		L.level_name = N
 		L.appeance_time = int(s)
+		if StageConf.has_section_key(s, "text"):
+			L.text = StageConf.get_value(s, "text")
 		L.load_data_from_name()
 		LevelDict[int(s)] = L
 		LastLevelTime = max(LastLevelTime, int(s))
@@ -52,7 +56,11 @@ func load_stages():
 	for s in StoryConfigFile.get_sections():
 		StageOrder.append(s)
 		LoadedStages[s] = get_loaded_stage_levels(s)
-		
+
+func present_level(L: Level):
+	L.transfer_nodes_to(self)
+	if L.text: emit_signal("say", L.text)
+
 func start():
 	set_physics_process(true)
 	goto_next_stage()
@@ -73,8 +81,8 @@ func _physics_process(delta):
 	Progress = round(ProgressFloat)
 	if oldProgress != Progress: 
 		emit_signal("Progressed", Progress)
-		if LoadedStages[current_stage].has(int(Progress)): 
-			LoadedStages[current_stage][int(Progress)].transfer_nodes_to(self)
+		if LoadedStages[current_stage].has(int(Progress)):
+			present_level(LoadedStages[current_stage][int(Progress)])
 		
 		if Progress >= LastLevelTime:
 			var cc = get_child_count()
