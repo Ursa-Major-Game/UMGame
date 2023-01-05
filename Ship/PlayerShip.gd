@@ -40,8 +40,8 @@ func reset():
 	$Sprite.visible = true
 	
 func destroy(_remove = false, _no_bomb = false):
-	#$RespawnTimer.start()
 	.destroy(false)
+	$RespawnTimer.call_deferred("start")
 
 func _integrate_forces(_state):
 	dir = Vector2.ZERO

@@ -36,7 +36,6 @@ func destroy(remove = true, no_bomb = true):
 	B.set_collision_mask_bit(lbit, false)
 	get_tree().get_root().call_deferred("add_child", B)
 	B.global_position = global_position
-	yield(B, "child_exiting_tree")
 	if remove: queue_free()
 
 func _ready():
@@ -79,6 +78,7 @@ func fire_all():
 
 
 func _on_Ship_body_entered(body):
+	if not active: return
 	if not invincible: call_deferred("destroy")
 	body.destroy()
 
