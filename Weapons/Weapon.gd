@@ -7,6 +7,7 @@ export (float) var AmmoSpeed = 100.0
 export (float, 1, 50) var RateOfFire = 10.0 # per seconds
 export (int, 1, 5) var AmmoNumber = 1
 export (float) var spacing_angle = 0.0
+export (float, 0.0, 1.0) var rand_variation_ratio = 0.1
 
 var _AInstance : Ammo
 onready var _Muzzle := $Muzzle
@@ -30,6 +31,7 @@ func fire_ammo(N: Object = get_tree().root, tint: Color = Color.white, collision
 		A.modulate = tint
 		A.dir = global_position.direction_to(_Muzzle.global_position)
 		A.dir = A.dir.rotated(c * deg2rad(spacing_angle))
+		A.dir = A.dir.rotated(min(randf(), rand_variation_ratio))
 		A.global_position = _Muzzle.global_position
 		A.scale = Vector2(AmmoScale, AmmoScale)
 		if collisions.has("layer") : A.set_collision_layer(collisions.layer)

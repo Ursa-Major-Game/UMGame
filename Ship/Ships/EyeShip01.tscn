@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ship/images/image12067.png" type="Texture" id=2]
+[ext_resource path="res://AI/FireAI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Weapons/PlasmaWeapon01.tscn" type="PackedScene" id=4]
+
+[node name="EyeShip01" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 3
+Primary = ExtResource( 4 )
+Secondary = ExtResource( 4 )
+AIScript = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )

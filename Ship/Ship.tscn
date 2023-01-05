@@ -111,6 +111,7 @@ anims/RESET = SubResource( 1 )
 anims/apparition = SubResource( 2 )
 
 [node name="Engine" parent="." instance=ExtResource( 3 )]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="Body" type="CollisionShape2D" parent="."]
