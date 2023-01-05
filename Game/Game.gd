@@ -73,3 +73,7 @@ func _on_StageNodesHandler_Progressed(seconds):
 
 func _on_StageNodesHandler_say(text):
 	$Annoucer.announce(text)
+
+
+func _on_StageNodesHandler_EndOfStory():
+	get_tree().change_scene("res://Game/Game.tscn")
