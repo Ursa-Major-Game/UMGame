@@ -15,22 +15,21 @@ var story_name : String
 var current_stage_id: int = -1 setget set_current_stage_index
 var current_stage : String
 var StageOrder : Array
-var StageHash: Dictionary
 
 var LastLevelTime : float = 0.0
 onready var InitialProgress = Progress
 
 func set_current_stage_index(idx: int):
-	if idx > StageOrder.size() - 1:
+	if idx >= StageOrder.size():
 		ErrorHandler.die("Story " + story_name, "stage index not in stages array. index: " + String(idx))
-	current_stage_id = idx
-	current_stage = StageOrder[idx]
+	else:
+		current_stage_id = idx
+		current_stage = StageOrder[idx]
 
 func goto_next_stage():
 	restartProgress(0)
-	if current_stage_id >= StageOrder.size() - 1:
+	if current_stage_id + 1 >= StageOrder.size():
 		emit_signal("EndOfStory")
-		ErrorHandler.die("End of Story" + story_name, "")
 	else:
 		set_current_stage_index(current_stage_id + 1)
 		emit_signal("say", current_stage)
