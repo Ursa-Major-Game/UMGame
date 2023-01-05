@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Ship/Ships/EyeShip01.tscn" type="PackedScene" id=1]
+
+[node name="0201" type="Node2D"]
+
+[node name="EyeShip01" parent="." instance=ExtResource( 1 )]
+position = Vector2( 603, 108 )
+rotation = 3.14159
+linear_velocity = Vector2( 0, 20 )
+__meta__ = {
+"_edit_group_": true
+}
