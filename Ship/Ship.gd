@@ -1,6 +1,8 @@
 extends SpaceObjectBody
 class_name Ship
 
+signal health_changed(health)
+
 var bomb = preload("res://Gameplay/Items/Bomb.tscn")
 
 export (float, 0.0, 0.2) var acceleration = 0.1
@@ -12,6 +14,7 @@ export (float, 0.1, 2.0) var PrimaryScale = 1.0
 export (float, 0.1, 2.0) var SecondaryScale = 1.0
 export (PackedScene) var AIScript
 export (PackedScene) var PathModifier
+export (int, 1, 1000) var max_health = 100
 
 var PW_instance : Weapon
 var SW_instance : Weapon
@@ -19,8 +22,20 @@ var AI_instance : AI
 
 var coll_info: Dictionary
 
+onready var health = max_health setget set_health
 var invincible = true
 var active = false
+
+func _integrate_forces(_state):
+	angular_velocity = 0
+
+func set_health(h: int):
+	health = clamp(h, 0, max_health)
+	if health == 0: call_deferred("destroy")
+	else: emit_signal("health_changed", health)
+	
+func remove_health_points(v: int):
+	set_health(health - v)
 
 func destroy(remove = true, no_bomb = true):
 	var lbit = get_collision_layer_bits()[0]
@@ -79,9 +94,12 @@ func fire_all():
 
 
 func _on_Ship_body_entered(body):
-	if not active: return
-	if not invincible: call_deferred("destroy")
-	body.destroy()
+	if not active or invincible: 
+		if body is Ammo: body.destroy()
+	
+	if body is Ammo: 
+		remove_health_points(body.damage)
+		body.destroy()
 
 
 func _on_InvincibleTimer_timeout():

@@ -35,7 +35,8 @@ func set_selection(i: int):
 	elif i < 0: i = max_val
 	var pos = buttons_vbox.get_child(i).rect_global_position + Vector2.DOWN * 24 + Vector2.LEFT * 28
 	selection = i
-	selection_blob_instance.target = pos
+	if selection_blob_instance:
+		selection_blob_instance.target = pos
 
 func trigger_selected_button():
 	var b: Button = buttons_vbox.get_child(selection)

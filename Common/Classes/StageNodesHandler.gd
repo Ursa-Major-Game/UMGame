@@ -36,6 +36,11 @@ func goto_next_stage():
 		if StoryConfigFile.has_section_key(current_stage, "start_message"):
 			emit_signal("say", StoryConfigFile.get_value(current_stage, "start_message"))
 
+func if_has_set(to: Level, from: ConfigFile, section: String, prop: String):
+	if from.has_section_key(section, prop):
+		var val = from.get_value(section, prop)
+		to.set(prop, val)
+
 func get_loaded_stage_levels(stage_name: String) -> Dictionary:
 	var StageConf := load_conf_file("res://Levels/Stages/" + stage_name + ".stage")
 	var LevelDict = {}
@@ -44,8 +49,8 @@ func get_loaded_stage_levels(stage_name: String) -> Dictionary:
 		var L = Level.new()
 		L.level_name = N
 		L.appeance_time = int(s)
-		if StageConf.has_section_key(s, "text"):
-			L.text = StageConf.get_value(s, "text")
+		if_has_set(L, StageConf, s, "text")
+		if_has_set(L, StageConf, s, "v_speed")
 		L.load_data_from_name()
 		LevelDict[int(s)] = L
 		LastLevelTime = max(LastLevelTime, int(s))

@@ -6,6 +6,7 @@ var score: int = 0
 export (int) var initial_lifes = 5
 
 var health : int = 100 setget set_health
+var health_ratio : int = 100
 onready var lifes : int = initial_lifes
 
 func reset():

@@ -1,50 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Ship/Ships/EyeShip01.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ship/Ships/EyeShip02.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Ship/Ships/ShipTypeAMarkI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Ship/Ships/ShipTypeAMarkII.tscn" type="PackedScene" id=4]
 
 [node name="0201" type="Node2D"]
 
-[node name="EyeShip01" parent="." instance=ExtResource( 1 )]
-position = Vector2( 603, 108 )
-rotation = 3.14159
-linear_velocity = Vector2( 0, 20 )
-__meta__ = {
-"_edit_group_": true
-}
-
 [node name="EyeShip02" parent="." instance=ExtResource( 2 )]
-position = Vector2( 604, 215 )
+position = Vector2( 625, 217 )
 rotation = 3.14159
+mass = 0.277778
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ShipTypeAMarkI" parent="." instance=ExtResource( 3 )]
-position = Vector2( 502, 174 )
+[node name="ShipTypeAMarkII" parent="." instance=ExtResource( 4 )]
+position = Vector2( 546, 224 )
 rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="ShipTypeAMarkI2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 682, 172 )
+[node name="ShipTypeAMarkII2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 706, 224 )
 rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ShipTypeAMarkI3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 751, 108 )
-rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ShipTypeAMarkI4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 448, 108 )
-rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}

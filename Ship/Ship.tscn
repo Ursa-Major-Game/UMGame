@@ -93,7 +93,6 @@ extents = Vector2( 5, 10 )
 [node name="Ship" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
-mass = 0.277778
 physics_material_override = SubResource( 7 )
 contacts_reported = 1
 contact_monitor = true

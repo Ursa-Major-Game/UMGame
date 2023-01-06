@@ -17,17 +17,19 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
+margin_top = 25.0
 margin_right = -928.0
+margin_bottom = -25.0
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 342.0
-margin_bottom = 58.0
+margin_bottom = 36.0
 text = "Health"
 align = 1
 
 [node name="UIBar" parent="VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 62.0
+margin_top = 40.0
 margin_right = 342.0
-margin_bottom = 62.0
+margin_bottom = 40.0

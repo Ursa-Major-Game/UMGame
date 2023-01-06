@@ -25,6 +25,9 @@ var limits = {
 	"right" : Vector2(1280, 720)
 }
 
+func _ready():
+	connect("health_changed", GamePlayerInfo, "set_health")
+
 func focus_weapons():
 	if not focused:
 		if not $AnimationPlayer.is_playing():
@@ -38,6 +41,7 @@ func reset():
 	collision_layer = coll_info.layer
 	collision_mask = coll_info.mask
 	$Sprite.visible = true
+	health = max_health
 	
 func destroy(_remove = false, _no_bomb = false):
 	.destroy(false)
@@ -50,7 +54,7 @@ func _integrate_forces(_state):
 		if Input.is_action_pressed(m):
 			dir += input_movement[i]
 	dir = dir.normalized()
-	applied_force = (dir * thrust).limit_length(max_speed)
+	applied_force = (dir * thrust) * 2
 
 func _physics_process(_delta):
 	global_position.x = clamp(global_position.x, limits.left.x, limits.right.x)
