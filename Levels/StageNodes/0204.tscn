@@ -7,31 +7,31 @@
 [node name="0201" type="Node2D"]
 
 [node name="ShipTypeAMarkI" parent="." instance=ExtResource( 3 )]
-position = Vector2( 556, 212 )
+position = Vector2( 539, -115 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkI2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 674, 206 )
+position = Vector2( 657, -121 )
 rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ShipTypeAMarkII" parent="." instance=ExtResource( 4 )]
-position = Vector2( 619, 106 )
+position = Vector2( 602, -221 )
 rotation = 3.14159
 
 [node name="ShipTypeAMarkII2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 624, 284 )
+position = Vector2( 607, -43 )
 rotation = 3.14159
 
 [node name="ShipTypeAMarkIII" parent="." instance=ExtResource( 1 )]
-position = Vector2( 448, 245 )
+position = Vector2( 431, -82 )
 rotation = 3.14159
 
 [node name="ShipTypeAMarkIII2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 770, 234 )
+position = Vector2( 753, -93 )
 rotation = 3.14159

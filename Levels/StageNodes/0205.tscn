@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Ship/Ships/ShipTypeAMarkIII.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ship/Ships/ShipTypeAMarkIIIv2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ship/Ships/ShipTypeAMarkII.tscn" type="PackedScene" id=4]
+
+[node name="0201" type="Node2D"]
+
+[node name="ShipTypeAMarkII" parent="." instance=ExtResource( 4 )]
+position = Vector2( 535, -5 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShipTypeAMarkII2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 540, 173 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShipTypeAMarkIII" parent="." instance=ExtResource( 1 )]
+position = Vector2( 534, -96 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShipTypeAMarkIII2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 786, -103 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShipTypeAMarkIIIv2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 539, 90 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShipTypeAMarkIIIv3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 535, -194 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShipTypeAMarkIIIv4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 783, -200 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
