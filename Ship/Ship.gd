@@ -58,6 +58,7 @@ func _ready():
 	if AIScript:
 		AI_instance = AIScript.instance()
 		add_child(AI_instance)
+		AI_instance.host = self
 		var _err = AI_instance.connect("fire_all", self, "fire_all")
 	show()
 	yield($AnimationPlayer,"animation_finished")
@@ -75,6 +76,10 @@ func hide():
 	
 func show():
 	$AnimationPlayer.play("apparition")
+
+func emit_particles(angle: float = randf()):
+	$HitParticles.rotate(angle)
+	$HitParticles/Particles2D.emitting = true
 
 func fire_primary():
 	if PW_instance: 
@@ -99,6 +104,7 @@ func _on_Ship_body_entered(body):
 	
 	if body is Ammo: 
 		remove_health_points(body.damage)
+		emit_particles()
 		body.destroy()
 
 
