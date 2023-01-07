@@ -17,6 +17,7 @@ var actions = {
 
 export (bool) var toggle_focus = false
 var focused = false
+var input_inactive : bool = true
 
 export (int, 50, 1000) var thrust
 export (float, 0, 1) var bounciness
@@ -26,7 +27,7 @@ var limits = {
 }
 
 func _ready():
-	connect("health_changed", GamePlayerInfo, "set_health")
+	var _err = connect("health_changed", GamePlayerInfo, "set_health")
 
 func focus_weapons():
 	if not focused:
@@ -48,6 +49,7 @@ func destroy(_remove = false, _no_bomb = false):
 	$RespawnTimer.call_deferred("start")
 
 func _integrate_forces(_state):
+	if input_inactive : return
 	dir = Vector2.ZERO
 	for i in input_movement:
 		var m = "move_%s" % [i]
@@ -57,6 +59,7 @@ func _integrate_forces(_state):
 	applied_force = (dir * thrust) * 2
 
 func _physics_process(_delta):
+	rotation = 0
 	global_position.x = clamp(global_position.x, limits.left.x, limits.right.x)
 	global_position.y = clamp(global_position.y, limits.left.y, limits.right.y)
 	var roll = lerp(dir.x, dir.x * 25, 0.2)
@@ -64,10 +67,10 @@ func _physics_process(_delta):
 	$Sprite.material.set_shader_param("x_rot", roll)
 	$Sprite.material.set_shader_param("y_rot", pitch)
 	
+	if input_inactive: return 
 	for a in actions:
 		if Input.is_action_pressed(a): call(actions[a])
 	
-	rotation = 0
 	if not toggle_focus:
 		if focused:
 			if not Input.is_action_pressed("focus_mode"):

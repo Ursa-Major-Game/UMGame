@@ -7,7 +7,7 @@ func set_player_health(v: int):
 	$VBoxContainer/UIBar.set_value(player_health)
 
 func _ready():
-	GamePlayerInfo.connect("set_health_bar", self, "set_player_health")
+	var _err = GamePlayerInfo.connect("set_health_bar", self, "set_player_health")
 
 func appear():
 	var _modulate = modulate

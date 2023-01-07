@@ -26,9 +26,11 @@ func add_player_ship():
 	PlayerShipInstance = PlayerShip.instance()
 	PlayerShipInstance.get_node("Sprite").modulate.a = 0
 	if PlayerShipInstance:
+		SpawnPoint.position = $World.get_spawn_position()
 		SpawnPoint.add_child(PlayerShipInstance)
 		PlayerShipInstance.limits.left = $UILayer/Background.get_limits_left()
 		PlayerShipInstance.limits.right = $UILayer/Background.get_limits_right()
+		PlayerShipInstance.linear_velocity = Vector2.DOWN * 150
 
 func start_game():
 	$UILayer.vanish()
@@ -36,12 +38,12 @@ func start_game():
 	yield($UILayer/Background, "opened")
 	if get_tree().paused:
 		get_tree().paused = false
-	else:
-		add_player_ship()
+	
 	$AsteroidsFactory/Timer.start()
 	can_pause = true
 	$StageNodesHandler.start()
 	GamePlayerInfo.reset()
+	$World.world_start()
 
 func pause_game():
 	if not can_pause: return
@@ -76,4 +78,9 @@ func _on_StageNodesHandler_say(text):
 
 
 func _on_StageNodesHandler_EndOfStory():
-	get_tree().change_scene("res://Game/Game.tscn")
+	var _err = get_tree().change_scene("res://Game/Game.tscn")
+
+
+func _on_World_release():
+	add_player_ship()
+	PlayerShipInstance.input_inactive = false

@@ -1,9 +1,54 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/StarMaterial.tres" type="Material" id=1]
-[ext_resource path="res://Levels/Surfaces/surface8seamless.png" type="Texture" id=2]
 [ext_resource path="res://World/CloudsMaterial.tres" type="Material" id=3]
 [ext_resource path="res://World/World.gd" type="Script" id=4]
+[ext_resource path="res://Levels/Items/SpawnPoint.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/SurfaceLayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "surface_appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/SurfaceLayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "surface_vanish"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/SurfaceLayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -24,10 +69,12 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/SurfaceLayer"]
 position = Vector2( 640, 360 )
-texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 250, 0, 500, 720 )
 region_filter_clip = true
+
+[node name="SpawnPoint" parent="ParallaxBackground" instance=ExtResource( 5 )]
+position = Vector2( 640, 360 )
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -43,3 +90,11 @@ margin_bottom = 717.0
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/surface_appear = SubResource( 3 )
+anims/surface_vanish = SubResource( 1 )
+
+[connection signal="release" from="ParallaxBackground/SpawnPoint" to="." method="_on_SpawnPoint_release"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
