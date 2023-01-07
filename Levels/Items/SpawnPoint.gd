@@ -20,3 +20,6 @@ func _on_SpawnPoint_release():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+func change_texture(tex: Texture):
+	$Sprite.texture = tex

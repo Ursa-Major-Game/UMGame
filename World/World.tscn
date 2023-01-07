@@ -19,6 +19,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParallaxBackground/Clouds/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.619608 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "surface_appear"
@@ -34,6 +46,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParallaxBackground/Clouds/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.301961 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "surface_vanish"
@@ -48,6 +72,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParallaxBackground/Clouds/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.67451 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="World" type="Node2D"]
@@ -79,7 +115,7 @@ position = Vector2( 640, 360 )
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/Clouds"]
-modulate = Color( 1, 1, 1, 0.423529 )
+modulate = Color( 1, 1, 1, 0.619608 )
 material = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0

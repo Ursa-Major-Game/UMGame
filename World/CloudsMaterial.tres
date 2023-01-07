@@ -130,4 +130,4 @@ shader_param/cloudalpha = 15.0
 shader_param/skytint = 0.5
 shader_param/skycolour1 = Vector3( 0, 0, 0 )
 shader_param/skycolour2 = Vector3( 0, 0, 0 )
-shader_param/m = Transform2D( 1.856, -1.2, 1.121, 1.6, 0, 0 )
+shader_param/m = Transform2D( 1.6, -1.2, 1.2, 1.6, 0, 0 )

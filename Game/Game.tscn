@@ -46,5 +46,6 @@ visible = false
 [connection signal="start_game" from="UILayer" to="." method="_on_UILayer_start_game"]
 [connection signal="EndOfStory" from="StageNodesHandler" to="." method="_on_StageNodesHandler_EndOfStory"]
 [connection signal="Progressed" from="StageNodesHandler" to="." method="_on_StageNodesHandler_Progressed"]
+[connection signal="change_spawn_texture" from="StageNodesHandler" to="World" method="_on_StageNodesHandler_change_spawn_texture"]
 [connection signal="change_surface" from="StageNodesHandler" to="World" method="_on_StageNodesHandler_change_surface"]
 [connection signal="say" from="StageNodesHandler" to="." method="_on_StageNodesHandler_say"]

@@ -84,3 +84,4 @@ func _on_StageNodesHandler_EndOfStory():
 func _on_World_release():
 	add_player_ship()
 	PlayerShipInstance.input_inactive = false
+

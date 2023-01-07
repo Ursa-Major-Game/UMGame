@@ -3,10 +3,12 @@ extends Node2D
 signal release
 
 onready var surface_sprite = $ParallaxBackground/SurfaceLayer/Sprite
+onready var spawn_point = $ParallaxBackground/SpawnPoint
 var tex_change_next: Texture
 
 func world_start():
-	$ParallaxBackground/SpawnPoint.start()
+	if spawn_point:
+		spawn_point.start()
 	
 func get_spawn_position() -> Vector2:
 	return $ParallaxBackground/SpawnPoint.position
@@ -32,3 +34,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_SpawnPoint_release():
 	emit_signal("release")
+
+
+func _on_StageNodesHandler_change_spawn_texture(tex):
+	if spawn_point: spawn_point.change_texture(tex)

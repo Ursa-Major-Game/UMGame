@@ -4,6 +4,7 @@ signal Progressed(seconds)
 signal EndOfStory
 signal say(text)
 signal change_surface(tex)
+signal change_spawn_texture(tex)
 
 export (int, 0, 100) var Progress = 0
 export (String, FILE, "*.story") var StoryFileName
@@ -41,6 +42,11 @@ func goto_next_stage():
 			var tex : Texture
 			tex = load("res://Levels/Surfaces/" + image_name + ".png")
 			emit_signal("change_surface", tex)
+		if StoryConfigFile.has_section_key(current_stage, "spawn_image"):
+			var image_name : String = StoryConfigFile.get_value(current_stage, "spawn_image")
+			var tex : Texture
+			tex = load("res://Levels/Decorations/" + image_name + ".png")
+			emit_signal("change_spawn_texture", tex)
 
 func if_has_set(to: Level, from: ConfigFile, section: String, prop: String):
 	if from.has_section_key(section, prop):
