@@ -5,7 +5,7 @@ signal fire_all
 onready var Ray = $RayCast2D
 var player: PlayerShip
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Ray.is_colliding():
 		var c = Ray.get_collider()
 		if c is PlayerShip:

@@ -2,7 +2,7 @@ extends SpaceObjectKinematic
 class_name Ammo
 
 export (int) var ammo_speed = 500
-export (int) var damage = 10
+export (int) var damage = 1
 
 func _physics_process(delta):
 	velocity = dir.normalized() * delta * ammo_speed

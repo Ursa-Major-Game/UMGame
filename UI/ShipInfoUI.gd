@@ -4,7 +4,7 @@ export (int) var player_health = 100 setget set_player_health
 
 func set_player_health(v: int):
 	player_health = clamp(v, 0, 100)
-	$VBoxContainer/UIBar.set_value(player_health)
+	$Screen/VBoxContainer/UIBar.set_value(player_health)
 
 func _ready():
 	var _err = GamePlayerInfo.connect("set_health_bar", self, "set_player_health")

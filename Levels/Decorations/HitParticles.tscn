@@ -9,12 +9,13 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0295454 ), 0.0, 0.0, 0,
 curve = SubResource( 5 )
 
 [sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.5
 trail_size_modifier = SubResource( 6 )
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 18.41
 gravity = Vector3( 0, 98, 0 )
-initial_velocity = 113.64
+initial_velocity = 500.0
 initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.96
@@ -28,9 +29,9 @@ hue_variation = 0.03
 
 [node name="Particles2D" type="Particles2D" parent="."]
 emitting = false
-lifetime = 0.5
+amount = 16
 one_shot = true
-explosiveness = 0.51
+explosiveness = 1.0
 randomness = 0.57
 process_material = SubResource( 4 )
 texture = ExtResource( 1 )

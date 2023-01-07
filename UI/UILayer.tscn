@@ -151,7 +151,6 @@ anims/ui_start = SubResource( 3 )
 anims/vanish = SubResource( 4 )
 
 [node name="ShipInfoUI" parent="." instance=ExtResource( 7 )]
-modulate = Color( 1, 1, 1, 0 )
 
 [connection signal="start_game" from="." to="." method="_on_UILayer_start_game"]
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

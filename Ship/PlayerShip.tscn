@@ -4,7 +4,7 @@
 [ext_resource path="res://Ship/PlayerShip.gd" type="Script" id=2]
 [ext_resource path="res://Ship/images/image230.png" type="Texture" id=3]
 [ext_resource path="res://Weapons/LaserWeapon01.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Weapons/PlasmaWeapon01.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ship/images/image230_n.png" type="Texture" id=6]
 
 [sub_resource type="Shader" id=3]
 code = "// Hey this is Hei! This shader \"fakes\" a 3D-camera perspective on CanvasItems.
@@ -108,7 +108,9 @@ script = ExtResource( 2 )
 max_speed = 500
 acceleration = 0.2
 Primary = ExtResource( 4 )
-Secondary = ExtResource( 5 )
+Secondary = ExtResource( 4 )
+PrimaryScale = 0.5
+SecondaryScale = 0.5
 toggle_focus = false
 thrust = 350
 bounciness = 0.5
@@ -118,6 +120,7 @@ modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 4 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 3 )
+normal_map = ExtResource( 6 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/focus_weapons = SubResource( 1 )

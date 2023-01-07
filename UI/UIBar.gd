@@ -1,11 +1,13 @@
 extends Control
 
-onready var progress_bar = $ProgressBar
-onready var initial_color: Color = progress_bar.get("custom_styles/fg").bg_color
+export (Texture) var LifeTexture
 
 func set_value(v: int):
-	var iv = progress_bar.value
-	$Tween.interpolate_property(progress_bar, "value", iv, v, 0.2)
-	$Tween.start()
-	progress_bar.get("custom_styles/fg").bg_color.r = initial_color.r / v * 100
-	print(progress_bar.get("custom_styles/fg").bg_color.r)
+	for c in $HBoxContainer.get_children():
+		if c is TextureRect: c.queue_free()
+	for i in v:
+		var L = TextureRect.new()
+		L.texture = LifeTexture
+		L.expand = true
+		$HBoxContainer.add_child(L)
+		L.rect_min_size = Vector2(16, 16)

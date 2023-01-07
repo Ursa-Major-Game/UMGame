@@ -14,7 +14,7 @@ export (float, 0.1, 2.0) var PrimaryScale = 1.0
 export (float, 0.1, 2.0) var SecondaryScale = 1.0
 export (PackedScene) var AIScript
 export (PackedScene) var PathModifier
-export (int, 1, 1000) var max_health = 100
+export (int, 1, 1000) var max_health = 3
 
 var PW_instance : Weapon
 var SW_instance : Weapon

@@ -12,8 +12,8 @@ onready var lifes : int = initial_lifes
 func reset():
 	score = 0
 	lifes = initial_lifes
-	set_health(100)
+	set_health(3)
 
 func set_health(v: int):
-	health = clamp(v, 0, 100)
+	health = clamp(v, 0, 3)
 	emit_signal("set_health_bar", health)
