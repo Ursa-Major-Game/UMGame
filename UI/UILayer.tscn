@@ -3,7 +3,7 @@
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Common/Fonts/futurespore.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/UILayer.gd" type="Script" id=3]
-[ext_resource path="res://UI/Window2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/ShaderOverlay.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Common/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/PauseDialog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/ShipInfoUI.tscn" type="PackedScene" id=7]
@@ -65,6 +65,7 @@ script = ExtResource( 3 )
 [node name="MainMenuUI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="TitleLabel" type="Label" parent="MainMenuUI"]
 modulate = Color( 1, 1, 1, 0 )
@@ -73,6 +74,7 @@ anchor_right = 0.5
 margin_left = -221.5
 margin_right = 221.5
 margin_bottom = 65.0
+mouse_filter = 1
 theme = ExtResource( 1 )
 custom_colors/font_color_shadow = Color( 0.352941, 0.0862745, 0.0862745, 1 )
 custom_constants/shadow_offset_x = 4
@@ -80,10 +82,6 @@ custom_constants/shadow_offset_y = 1
 text = "Ursa Major"
 align = 1
 valign = 1
-
-[node name="Window2" parent="MainMenuUI" instance=ExtResource( 4 )]
-margin_left = -326.5
-margin_right = 328.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI"]
 anchor_left = 0.5
@@ -105,6 +103,7 @@ alignment = 1
 margin_top = 270.0
 margin_right = 128.0
 margin_bottom = 312.0
+mouse_filter = 1
 disabled = true
 text = "Start"
 flat = true
@@ -113,6 +112,7 @@ flat = true
 margin_top = 316.0
 margin_right = 128.0
 margin_bottom = 358.0
+mouse_filter = 1
 disabled = true
 text = "Bosses"
 flat = true
@@ -121,6 +121,7 @@ flat = true
 margin_top = 362.0
 margin_right = 128.0
 margin_bottom = 404.0
+mouse_filter = 1
 disabled = true
 text = "Options"
 flat = true
@@ -129,6 +130,7 @@ flat = true
 margin_top = 408.0
 margin_right = 128.0
 margin_bottom = 450.0
+mouse_filter = 1
 text = "Quit"
 flat = true
 
@@ -137,6 +139,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -41.0
 margin_right = 264.0
+mouse_filter = 1
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Version : 0.1"
@@ -144,6 +147,13 @@ valign = 2
 
 [node name="PauseDialog" parent="MainMenuUI" instance=ExtResource( 6 )]
 visible = false
+mouse_filter = 1
+
+[node name="ShaderOverlay" parent="MainMenuUI" instance=ExtResource( 4 )]
+margin_left = 511.0
+margin_top = 216.0
+margin_right = 774.0
+margin_bottom = 501.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
@@ -151,6 +161,7 @@ anims/ui_start = SubResource( 3 )
 anims/vanish = SubResource( 4 )
 
 [node name="ShipInfoUI" parent="." instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 0 )
 
 [connection signal="start_game" from="." to="." method="_on_UILayer_start_game"]
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

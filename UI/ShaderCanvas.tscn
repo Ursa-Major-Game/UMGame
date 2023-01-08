@@ -8,4 +8,4 @@
 material = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+mouse_filter = 1

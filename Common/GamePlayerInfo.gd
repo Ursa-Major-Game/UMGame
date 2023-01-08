@@ -1,19 +1,12 @@
 extends Node
 
-signal set_health_bar(health)
+signal set_player_shield(shield)
+signal set_player_lifes(lifes)
 
-var score: int = 0
-export (int) var initial_lifes = 5
+var shield : int = 100 setget set_shield
 
-var health : int = 100 setget set_health
-var health_ratio : int = 100
-onready var lifes : int = initial_lifes
+func set_shield(v: int):
+	emit_signal("set_player_shield", v)
 
-func reset():
-	score = 0
-	lifes = initial_lifes
-	set_health(3)
-
-func set_health(v: int):
-	health = clamp(v, 0, 3)
-	emit_signal("set_health_bar", health)
+func set_lifes(l: int):
+	emit_signal("set_player_lifes", l)

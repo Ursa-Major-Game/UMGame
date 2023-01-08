@@ -1,17 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/UIBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ShipInfoUI.gd" type="Script" id=2]
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=3]
-[ext_resource path="res://Common/Shaders/CRT2.tres" type="Material" id=4]
-[ext_resource path="res://Common/Shaders/shaderplaceholder.png" type="Texture" id=5]
-[ext_resource path="res://UI/images/panel4.png" type="Texture" id=6]
-[ext_resource path="res://UI/images/image3558.png" type="Texture" id=7]
+[ext_resource path="res://UI/ShaderOverlay.tscn" type="PackedScene" id=4]
 
 [node name="ShipInfoUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+mouse_filter = 1
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 
@@ -20,47 +17,44 @@ script = ExtResource( 2 )
 [node name="Screen" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
-
-[node name="ScreenBackground" type="TextureRect" parent="Screen"]
-margin_left = 8.0
-margin_top = 49.0
-margin_right = 365.0
-margin_bottom = 324.0
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
+margin_left = 2.0
+margin_top = 173.0
+margin_right = -903.0
+margin_bottom = -195.0
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Screen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 61.0
-margin_top = 121.0
-margin_right = -910.0
-margin_bottom = -449.0
+margin_left = 44.0
+margin_top = 82.0
+margin_right = 26.0
+margin_bottom = 3.0
 rect_scale = Vector2( 0.780291, 0.780291 )
 
-[node name="UIBar" parent="Screen/VBoxContainer" instance=ExtResource( 1 )]
+[node name="UIShieldBar" parent="Screen/VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 309.0
-margin_bottom = 150.0
+margin_right = 357.0
+margin_bottom = 134.0
 rect_scale = Vector2( 1, 1 )
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
+LabelName = "Shield"
+ColorTint = Color( 0.45098, 0.996078, 0.956863, 1 )
 
-[node name="ShaderOverlay" type="TextureRect" parent="Screen"]
-material = ExtResource( 4 )
-margin_left = 8.0
-margin_top = 49.0
-margin_right = 365.0
-margin_bottom = 324.0
-texture = ExtResource( 5 )
-expand = true
+[node name="UILifesBar" parent="Screen/VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 138.0
+margin_right = 357.0
+margin_bottom = 273.0
+rect_scale = Vector2( 1, 1 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+LabelName = "Lifes"
+ColorTint = Color( 1, 0.552941, 0.552941, 1 )
 
-[node name="ScreenForeground" type="TextureRect" parent="Screen"]
-margin_right = 365.0
-margin_bottom = 348.0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 6
+[node name="ShaderOverlay" parent="Screen" instance=ExtResource( 4 )]

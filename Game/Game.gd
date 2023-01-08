@@ -12,7 +12,7 @@ var game_input = {
 
 var can_pause:= false
 
-var PlayerShipInstance
+var PlayerShipInstance: PlayerShip
 onready var SpawnPoint: Position2D = $SpawnPosition2D
 
 func unzoom():
@@ -31,6 +31,7 @@ func add_player_ship():
 		PlayerShipInstance.limits.left = $UILayer/Background.get_limits_left()
 		PlayerShipInstance.limits.right = $UILayer/Background.get_limits_right()
 		PlayerShipInstance.linear_velocity = Vector2.DOWN * 150
+		var _err = PlayerShipInstance.connect("game_end", self, "end_game")
 
 func start_game():
 	$UILayer.vanish()
@@ -42,7 +43,6 @@ func start_game():
 	$AsteroidsFactory/Timer.start()
 	can_pause = true
 	$StageNodesHandler.start()
-	GamePlayerInfo.reset()
 	$World.world_start()
 
 func pause_game():
@@ -53,7 +53,11 @@ func pause_game():
 	yield($UILayer, "ui_displayed")
 	can_pause = false
 
+func end_game():
+	var _err = get_tree().change_scene("res://Game/Game.tscn")
+
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	yield($UILayer, "ui_displayed")
 	if dbg_straight_to_game: start_game()
 	

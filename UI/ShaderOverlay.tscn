@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Common/Shaders/CRT2.tres" type="Material" id=1]
+[ext_resource path="res://Common/Shaders/shaderplaceholder.png" type="Texture" id=2]
+
+[node name="ShaderOverlay" type="TextureRect"]
+material = ExtResource( 1 )
+margin_left = 8.0
+margin_top = 49.0
+margin_right = 365.0
+margin_bottom = 324.0
+texture = ExtResource( 2 )
+expand = true

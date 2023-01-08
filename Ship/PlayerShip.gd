@@ -1,6 +1,9 @@
 extends Ship
 class_name PlayerShip
 
+signal lifes_changed(lifes)
+signal game_end
+
 var input_movement = {
 	"down" : Vector2.DOWN,
 	"up" : Vector2.UP,
@@ -15,19 +18,38 @@ var actions = {
 	"all_weapons" : "fire_all"
 }
 
-export (bool) var toggle_focus = false
-var focused = false
-var input_inactive : bool = true
-
-export (int, 50, 1000) var thrust
-export (float, 0, 1) var bounciness
 var limits = {
 	"left": Vector2(0, 0),
 	"right" : Vector2(1280, 720)
 }
 
+export (bool) var toggle_focus = false
+var focused = false
+var input_inactive : bool = true
+
+export (int, 50, 1000) var thrust
+
+export (int, 0, 10) var max_lifes = 5
+onready var lifes = max_lifes setget set_lifes
+
+func set_lifes(l: int):
+	lifes = clamp(l, 0, max_lifes)
+	emit_signal("lifes_changed", lifes)
+	if lifes == 0:
+		emit_signal("game_end")
+	
+func set_shield(s: int):
+	shield = clamp(s, 0, max_shield)
+	emit_signal("shield_changed", shield)
+	if shield == 0:
+		set_lifes(lifes - 1)
+		set_shield(max_shield)
+		call_deferred("destroy")
+
 func _ready():
-	var _err = connect("health_changed", GamePlayerInfo, "set_health")
+	var _err = connect("shield_changed", GamePlayerInfo, "set_shield")
+	var _err2 = connect("lifes_changed", GamePlayerInfo, "set_lifes")
+	reset(true)
 
 func focus_weapons():
 	if not focused:
@@ -38,14 +60,16 @@ func unfocus_weapons():
 	if not $AnimationPlayer.is_playing():
 		$AnimationPlayer.play_backwards("focus_weapons")
 
-func reset():
-	collision_layer = coll_info.layer
-	collision_mask = coll_info.mask
+func reset(reset_lifes :bool = false):
 	$Sprite.visible = true
-	health = max_health
+	set_shield(max_shield)
+	if reset_lifes:
+		set_lifes(max_lifes)
 	
 func destroy(_remove = false, _no_bomb = false):
-	.destroy(false)
+	.destroy(_remove, _no_bomb)
+	$AnimationPlayer.play("hit")
+	can_fire = false
 	$RespawnTimer.call_deferred("start")
 
 func _integrate_forces(_state):
@@ -62,8 +86,8 @@ func _physics_process(_delta):
 	rotation = 0
 	global_position.x = clamp(global_position.x, limits.left.x, limits.right.x)
 	global_position.y = clamp(global_position.y, limits.left.y, limits.right.y)
-	var roll = lerp(dir.x, dir.x * 25, 0.2)
-	var pitch = lerp(dir.y, dir.y * 25, 0.2)
+	var pitch = lerp(dir.x, dir.x * 25, 0.3)
+	var roll = lerp(dir.y, dir.y * -25, 0.3)
 	$Sprite.material.set_shader_param("x_rot", roll)
 	$Sprite.material.set_shader_param("y_rot", pitch)
 	
@@ -76,9 +100,11 @@ func _physics_process(_delta):
 			if not Input.is_action_pressed("focus_mode"):
 				unfocus_weapons()
 	
+	$CoreSprite.rotate(_delta)
 
 func _on_RespawnTimer_timeout():
 	reset()
+	can_fire = true
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
