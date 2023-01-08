@@ -28,6 +28,7 @@ func _ready():
 	selection_blob_instance.position = pos
 	emit_signal("ui_displayed")
 	enable_all_buttons()
+	$TerminalSoundsPlayer.play()
 
 func set_selection(i: int):
 	var max_val = buttons_vbox.get_child_count() - 1
@@ -37,6 +38,7 @@ func set_selection(i: int):
 	selection = i
 	if selection_blob_instance:
 		selection_blob_instance.target = pos
+		selection_blob_instance.play_sound()
 
 func trigger_selected_button():
 	var b: Button = buttons_vbox.get_child(selection)

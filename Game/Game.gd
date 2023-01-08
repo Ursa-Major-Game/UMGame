@@ -40,7 +40,6 @@ func start_game():
 	if get_tree().paused:
 		get_tree().paused = false
 	
-	$AsteroidsFactory/Timer.start()
 	can_pause = true
 	$StageNodesHandler.start()
 	$World.world_start()

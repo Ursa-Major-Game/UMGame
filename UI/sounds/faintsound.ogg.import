@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/faintsound.ogg-a0c3941ca1712b82769b5d8da1cc01ef.oggstr"
+
+[deps]
+
+source_file="res://UI/sounds/faintsound.ogg"
+dest_files=[ "res://.import/faintsound.ogg-a0c3941ca1712b82769b5d8da1cc01ef.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

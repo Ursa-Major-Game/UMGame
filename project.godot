@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Asteroid/Asteroid.gd"
 }, {
+"base": "AudioStreamPlayer",
+"class": "AudioStreamPlayerFolder",
+"language": "GDScript",
+"path": "res://Common/AudioStreamPlayerFolder.gd"
+}, {
 "base": "Node2D",
 "class": "Engine",
 "language": "GDScript",
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "AI": "",
 "Ammo": "",
 "Asteroid": "",
+"AudioStreamPlayerFolder": "",
 "Engine": "",
 "Level": "",
 "PlayerShip": "",
@@ -90,6 +96,7 @@ config/icon="res://icon.png"
 Globals="*res://Common/Globals.gd"
 ErrorHandler="*res://Common/Classes/ErrorHandler.gd"
 GamePlayerInfo="*res://Common/GamePlayerInfo.gd"
+FsHelper="*res://Common/FSHelper.gd"
 
 [display]
 

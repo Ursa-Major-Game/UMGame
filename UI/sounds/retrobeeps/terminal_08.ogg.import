@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/terminal_08.ogg-03b56a25590622d05217f0078b8f8c0c.oggstr"
+
+[deps]
+
+source_file="res://UI/sounds/retrobeeps/terminal_08.ogg"
+dest_files=[ "res://.import/terminal_08.ogg-03b56a25590622d05217f0078b8f8c0c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

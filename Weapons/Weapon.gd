@@ -43,6 +43,7 @@ func fire_ammo(N: Object = get_tree().root, tint: Color = Color.white, collision
 		c = c * (-1)
 	
 	_can_fire = false
+	$AudioStreamPlayer2D.play()
 	$Timer.start()
 
 

@@ -20,3 +20,6 @@ func vanish():
 	
 func appear():
 	$AnimationPlayer.play("vanish", -1, -1, true)
+
+func play_sound():
+	$AudioStreamPlayerFolder.play()
