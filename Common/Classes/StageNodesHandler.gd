@@ -63,6 +63,7 @@ func get_loaded_stage_levels(stage_name: String) -> Dictionary:
 		L.appeance_time = int(s)
 		if_has_set(L, StageConf, s, "text")
 		if_has_set(L, StageConf, s, "v_speed")
+		if_has_set(L, StageConf, s, "music")
 		L.load_data_from_name()
 		LevelDict[int(s)] = L
 		LastLevelTime = max(LastLevelTime, int(s))
@@ -76,10 +77,12 @@ func load_stages():
 func present_level(L: Level):
 	L.transfer_nodes_to(self)
 	if L.text: emit_signal("say", L.text)
+	if L.music: emit_signal("set_music", L.music)
 
-func start():
+func start(resume : bool = false):
 	set_physics_process(true)
-	goto_next_stage()
+	if not resume:
+		goto_next_stage()
 	
 func restartProgress(i : int = InitialProgress):
 	Progress = i

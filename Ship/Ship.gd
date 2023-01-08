@@ -39,7 +39,7 @@ func remove_shield_points(v: int):
 
 func destroy(remove = true, no_bomb = true):
 	$Sprite.visible = false
-	
+	$ExplodeSoundPlayer.play()
 	if no_bomb: 
 		if remove: 
 			queue_free()

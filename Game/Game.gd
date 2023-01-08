@@ -34,14 +34,14 @@ func add_player_ship():
 		var _err = PlayerShipInstance.connect("game_end", self, "end_game")
 
 func start_game():
+	var resuming = get_tree().paused
 	$UILayer.vanish()
 	$UILayer/Background.open_view()
 	yield($UILayer/Background, "opened")
-	if get_tree().paused:
+	if resuming:
 		get_tree().paused = false
-	
 	can_pause = true
-	$StageNodesHandler.start()
+	$StageNodesHandler.start(resuming)
 	$World.world_start()
 
 func pause_game():
@@ -68,7 +68,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed(gi):
 			call(game_input[gi])
 	
-func _on_UILayer_start_game(_level = 0):
+func _on_UILayer_start_game():
 	start_game()
 
 

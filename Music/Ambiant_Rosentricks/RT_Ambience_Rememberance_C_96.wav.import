@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/RT_Ambience_Rememberance_C_96.wav-3c85020b40e468a348ded721fe83443c.sample"
+
+[deps]
+
+source_file="res://Music/Ambiant_Rosentricks/RT_Ambience_Rememberance_C_96.wav"
+dest_files=[ "res://.import/RT_Ambience_Rememberance_C_96.wav-3c85020b40e468a348ded721fe83443c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

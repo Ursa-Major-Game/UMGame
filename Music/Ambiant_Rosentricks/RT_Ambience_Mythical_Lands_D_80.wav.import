@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/RT_Ambience_Mythical_Lands_D_80.wav-38d93e392b907bc28619626ec3da8b34.sample"
+
+[deps]
+
+source_file="res://Music/Ambiant_Rosentricks/RT_Ambience_Mythical_Lands_D_80.wav"
+dest_files=[ "res://.import/RT_Ambience_Mythical_Lands_D_80.wav-38d93e392b907bc28619626ec3da8b34.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

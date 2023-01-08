@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Common/Themes/ClassicTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Common/Fonts/futurespore.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://UI/ShipInfoUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/sounds/retrobeeps/terminal_01.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Common/AudioStreamPlayerFolder.gd" type="Script" id=9]
+[ext_resource path="res://Music/Ambient/sfx_19a.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -171,6 +172,7 @@ script = ExtResource( 9 )
 Folder = "res://UI/sounds/retrobeeps"
 
 [node name="AmbientPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="start_game" from="." to="." method="_on_UILayer_start_game"]
 [connection signal="pressed" from="MainMenuUI/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

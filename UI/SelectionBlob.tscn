@@ -64,6 +64,7 @@ anims/enter_tree = SubResource( 3 )
 anims/vanish = SubResource( 4 )
 
 [node name="AudioStreamPlayerFolder" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
 script = ExtResource( 3 )
 Folder = "res://UI/sounds/Switch"
 

@@ -12,6 +12,7 @@ func _physics_process(delta):
 func _on_Timer_timeout():
 	emit_signal("release")
 	$Label.visible = false
+	$AudioStreamPlayer2D.play()
 
 
 func _on_SpawnPoint_release():

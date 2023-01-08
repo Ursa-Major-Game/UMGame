@@ -28,6 +28,7 @@ func _ready():
 	selection_blob_instance.position = pos
 	emit_signal("ui_displayed")
 	enable_all_buttons()
+	$AmbientPlayer.play()
 	$TerminalSoundsPlayer.play()
 
 func set_selection(i: int):
@@ -81,7 +82,10 @@ func reappear():
 	emit_signal("ui_displayed")
 	set_process(true)
 	selection_blob_instance.appear()
+	$AmbientPlayer.play()
+	$TerminalSoundsPlayer.play()
 
 
 func _on_UILayer_start_game():
 	$ShipInfoUI.appear()
+	$AmbientPlayer.stop()

@@ -7,6 +7,7 @@ export (float) var appeance_time = 100.0
 export (PackedScene) var level_data
 export (String) var text
 export (Vector2) var v_speed
+export (String, FILE) var music
 
 func load_data_from_name():
 	level_data = load("res://Levels/StageNodes/" + level_name + ".tscn")
