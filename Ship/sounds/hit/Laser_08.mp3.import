@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Laser_08.mp3-ba3b7f89b4dcd7d27e1096518e8939ba.mp3str"
+
+[deps]
+
+source_file="res://Ship/sounds/hit/Laser_08.mp3"
+dest_files=[ "res://.import/Laser_08.mp3-ba3b7f89b4dcd7d27e1096518e8939ba.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

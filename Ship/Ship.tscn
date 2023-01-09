@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Ship/ShipShader.tres" type="Material" id=2]
 [ext_resource path="res://Ship/Engine/Engine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Decorations/HitParticles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ship/sounds/explosions/explodemini.wav" type="AudioStream" id=5]
+[ext_resource path="res://Common/AudioStreamPlayerFolder.gd" type="Script" id=6]
 
 [sub_resource type="PhysicsMaterial" id=7]
 
@@ -140,8 +141,10 @@ autostart = true
 
 [node name="HitParticles" parent="." instance=ExtResource( 4 )]
 
-[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -15.0
+script = ExtResource( 6 )
+Folder = "res://Ship/sounds/hit"
 
 [node name="ExplodeSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )

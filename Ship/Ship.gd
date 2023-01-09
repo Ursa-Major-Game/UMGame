@@ -39,7 +39,8 @@ func remove_shield_points(v: int):
 
 func destroy(remove = true, no_bomb = true):
 	$Sprite.visible = false
-	$ExplodeSoundPlayer.play()
+	$HitSoundPlayer.play()
+	yield($HitSoundPlayer, "finished")
 	if no_bomb: 
 		if remove: 
 			queue_free()
@@ -103,9 +104,9 @@ func _on_Ship_body_entered(body):
 		if body is Ammo: body.destroy()
 	
 	if body is Ammo:
+		body.destroy()
 		remove_shield_points(1)
 		emit_particles()
-		body.destroy()
 
 func _on_InvincibleTimer_timeout():
 	invincible = false

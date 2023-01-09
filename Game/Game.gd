@@ -43,6 +43,8 @@ func start_game():
 	can_pause = true
 	$StageNodesHandler.start(resuming)
 	$World.world_start()
+	$AnimationPlayer.play("fade-in")
+	$MusicPlayer.play()
 
 func pause_game():
 	if not can_pause: return
