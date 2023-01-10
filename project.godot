@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Common/Classes/SpaceObjectKinematic.gd"
 }, {
+"base": "Node",
+"class": "UMConfig",
+"language": "GDScript",
+"path": "res://UMConfig.gd"
+}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -81,6 +86,7 @@ _global_script_class_icons={
 "SpaceObject": "",
 "SpaceObjectBody": "",
 "SpaceObjectKinematic": "",
+"UMConfig": "",
 "Weapon": ""
 }
 
@@ -97,6 +103,7 @@ Globals="*res://Common/Globals.gd"
 ErrorHandler="*res://Common/Classes/ErrorHandler.gd"
 GamePlayerInfo="*res://Common/GamePlayerInfo.gd"
 FsHelper="*res://Common/FSHelper.gd"
+UserOptions="*res://Common/UserOptions.gd"
 
 [display]
 

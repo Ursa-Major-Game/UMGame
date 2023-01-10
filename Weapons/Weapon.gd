@@ -8,6 +8,7 @@ export (float, 1, 50) var RateOfFire = 10.0 # per seconds
 export (int, 1, 5) var AmmoNumber = 1
 export (float) var spacing_angle = 0.0
 export (float, 0.0, 1.0) var rand_variation_ratio = 0.1
+export (bool) var contact_weapon = false
 
 var _AInstance : Ammo
 onready var _Muzzle := $Muzzle
