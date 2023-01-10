@@ -10,6 +10,7 @@ func list_files_in_directory(path: String, auth_ext: Array = []) -> Array:
 		var file = dir.get_next()
 		var extensions = file.split(".")
 		var ext_nb = extensions.size()
+		if not ext_nb > 1 : break 
 		var ext = extensions[1]
 		if not auth_ext.has(ext) or ext_nb > 2: break
 		if file == "":
