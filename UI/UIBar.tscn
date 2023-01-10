@@ -14,11 +14,13 @@ anchor_bottom = 1.0
 margin_right = -965.0
 margin_bottom = -707.0
 rect_scale = Vector2( 0.749494, 0.749494 )
+mouse_filter = 2
 script = ExtResource( 3 )
 LifeTexture = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 rect_scale = Vector2( 1.35747, 1.04571 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )

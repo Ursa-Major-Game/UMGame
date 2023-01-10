@@ -8,7 +8,9 @@
 [node name="ShipInfoUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+margin_right = -858.0
+margin_bottom = -220.0
+mouse_filter = 2
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 
@@ -21,7 +23,7 @@ margin_left = 2.0
 margin_top = 173.0
 margin_right = -903.0
 margin_bottom = -195.0
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Screen"]
 anchor_right = 1.0
@@ -31,14 +33,14 @@ margin_top = 82.0
 margin_right = 26.0
 margin_bottom = 3.0
 rect_scale = Vector2( 0.780291, 0.780291 )
+mouse_filter = 2
 
 [node name="UIShieldBar" parent="Screen/VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 357.0
-margin_bottom = 134.0
+margin_right = 0.0
+margin_bottom = 24.0
 rect_scale = Vector2( 1, 1 )
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 LabelName = "Shield"
@@ -47,14 +49,14 @@ ColorTint = Color( 0.45098, 0.996078, 0.956863, 1 )
 [node name="UILifesBar" parent="Screen/VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 138.0
-margin_right = 357.0
-margin_bottom = 273.0
+margin_top = 28.0
+margin_right = 0.0
+margin_bottom = 53.0
 rect_scale = Vector2( 1, 1 )
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 LabelName = "Lifes"
 ColorTint = Color( 1, 0.552941, 0.552941, 1 )
 
 [node name="ShaderOverlay" parent="Screen" instance=ExtResource( 4 )]
+mouse_filter = 2

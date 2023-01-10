@@ -1,6 +1,7 @@
 extends CanvasLayer
 signal start_game()
 signal ui_displayed
+signal quit
 
 var ui_input = {
 	"down" : 1,
@@ -48,6 +49,7 @@ func trigger_selected_button():
 	call_deferred(s.method)
 
 func _on_StartButton_pressed():
+	$Options.visible = false
 	emit_signal("start_game")
 
 func _on_BossesButton_pressed():
@@ -55,9 +57,10 @@ func _on_BossesButton_pressed():
 
 func _on_OptionsButton_pressed():
 	set_selection(2)
+	$Options.toggle()
 
 func _on_QuitButton_pressed():
-	get_tree().quit()
+	emit_signal("quit")
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
