@@ -44,7 +44,7 @@ func start_game():
 	$StageNodesHandler.start(resuming)
 	$World.world_start()
 	$AnimationPlayer.play("fade-in")
-	$MusicPlayer.play()
+	#$MusicPlayer.play()
 
 func pause_game():
 	if not can_pause: return
@@ -58,7 +58,7 @@ func end_game():
 	var _err = get_tree().change_scene("res://Game/Game.tscn")
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	yield($UILayer, "ui_displayed")
 	if dbg_straight_to_game: start_game()
 	
@@ -90,3 +90,10 @@ func _on_World_release():
 	add_player_ship()
 	PlayerShipInstance.input_inactive = false
 
+func quit():
+	UserOptions.quit_hook()
+	get_tree().quit()
+
+
+func _on_UILayer_quit():
+	quit()
