@@ -58,6 +58,7 @@ func end_game():
 	var _err = get_tree().change_scene("res://Game/Game.tscn")
 
 func _ready():
+	UserOptions.connect("finished", self, "_on_UserOptions_finished")
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	yield($UILayer, "ui_displayed")
 	if dbg_straight_to_game: start_game()
@@ -92,8 +93,10 @@ func _on_World_release():
 
 func quit():
 	UserOptions.quit_hook()
-	get_tree().quit()
-
+	
 
 func _on_UILayer_quit():
 	quit()
+
+func _on_UserOptions_finished():
+	get_tree().quit()

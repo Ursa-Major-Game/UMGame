@@ -24,7 +24,11 @@ func load_user_config() -> ConfigFile:
 	for s in user_config.get_sections():
 		if default_config.has_section(s):
 			for k in user_config.get_section_keys(s):
-				if default_config.has_section_key(s):
+				if default_config.has_section_key(s, k):
+					print("Section: " + s)
+					print("Key: " + k)
+					print("Default Value: " + String(default_config.get_value(s, k)))
+					print("User Value: " + String(user_config.get_value(s, k)))
 					default_config.set_value(s, k, user_config.get_value(s, k))
 	return default_config
 
@@ -41,6 +45,7 @@ func conf_is_complete(s: String):
 
 func is_equal(to: ConfigFile) -> bool:
 	for s in config.get_sections():
+		print(s)
 		if not to.has_section(s): return false
 		else:
 			for k in config.get_section_keys(s):
@@ -48,6 +53,5 @@ func is_equal(to: ConfigFile) -> bool:
 				elif to.get_value(s, k) != config.get_value(s, k): return false
 	return true
 	
-func save():
-	if config and path:
-		config.save(path)
+func save(c: ConfigFile = config):
+	c.save("user://user.cfg")

@@ -13,4 +13,4 @@ func toggle():
 
 func _on_FullscreenButton_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
-	UserOptions.config.set_value("Screen", "fullscreen", OS.window_fullscreen)
+	UserOptions.loaded_config.set_value("Screen", "fullscreen", button_pressed)

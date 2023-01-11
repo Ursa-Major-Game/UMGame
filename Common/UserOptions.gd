@@ -1,20 +1,25 @@
 extends Node
 
+signal finished
+
 var Options
-var config: ConfigFile
+var loaded_config: ConfigFile
 
 func _ready():
 	Options = UMConfig.new()
-	var user_files = FsHelper.list_files_in_directory("user://", [".cfg"])
+	var user_files = FsHelper.list_files_in_directory("user://", ["cfg"])
+	print(user_files)
 	if user_files.has("user.cfg"):
-		config = Options.load_user_config()
+		loaded_config = Options.load_user_config()
+		print("user file loaded")
 	else:
-		config = Options.load_default_config()
+		loaded_config = Options.load_default_config()
+		print("default file loaded")
 	init_screen()
 
 func init_screen():
-	OS.window_fullscreen = Options.config.get_value("Screen", "fullscreen")
+	OS.window_fullscreen = loaded_config.get_value("Screen", "fullscreen")
 
 func quit_hook():
-	if not Options.is_equal(config):
-		Options.save()
+	Options.save(loaded_config)
+	emit_signal("finished")

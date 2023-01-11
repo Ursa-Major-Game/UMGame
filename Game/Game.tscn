@@ -46,7 +46,6 @@ script = ExtResource( 3 )
 PlayerShip = ExtResource( 4 )
 
 [node name="Annoucer" parent="." instance=ExtResource( 8 )]
-visible = false
 mouse_filter = 2
 
 [node name="World" parent="." instance=ExtResource( 1 )]
